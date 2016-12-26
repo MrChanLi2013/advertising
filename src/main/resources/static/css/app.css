@@ -74,6 +74,12 @@ li.open .dropdown-menu li a:before, .blades-ul li.dropdown:hover ul.dropdown-men
     text-align: center;
 }
 
+.blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
+    top: 91px;
+    opacity: 1;
+    background: #c20012;
+}
+
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
         top: 100%;
