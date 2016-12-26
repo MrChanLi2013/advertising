@@ -1,0 +1,27 @@
+#about .circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    line-height: 90px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 21px;
+    text-align: center;
+    background-color: #da1c21;
+    margin: 20px 0 20px -45px;
+    position: relative;
+    left: 50%;
+}
+
+#about .line {
+    width: 1px;
+    background-color: #000;
+    display: block;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+}
+
+.module {
+    margin-top: 30px;
+}

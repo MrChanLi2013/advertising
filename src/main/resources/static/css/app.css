@@ -1,0 +1,90 @@
+body {
+    color: #575656;
+}
+
+header {
+    background: #fff;
+}
+
+p {
+    text-indent: 2em;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.navbar-brand img {
+    width: 242px;
+    height: 88px;
+}
+
+.blades-ul {
+    margin-top: 5rem;
+}
+
+.blades-ul > li {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.blades-ul > li > a {
+    color: #575656;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.bar {
+    height: 2px;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    background: #c20012;
+    opacity: 0;
+    -webkit-transition: top 0.19s ease-in-out 0s, opacity 0.25s ease-in-out;
+    transition: top 0.19s ease-in-out 0s, opacity 0.25s ease-in-out;
+}
+
+.blades-ul > li:hover > a > .bar {
+    bottom: 0;
+    top: auto;
+    background-color: #c20012;
+}
+
+.blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
+    top: 100%;
+    opacity: .5;
+}
+
+li.open .dropdown-menu li a:before, .blades-ul li.dropdown:hover ul.dropdown-menu li a:before {
+    content: ">";
+    color: #c20012;
+    padding-right: 10px;
+}
+
+.footer {
+    margin-top: 30px;
+    letter-spacing: .05em;
+    border-top: 2px solid #c20012;
+    padding-top: 20px;
+}
+
+.footer > p {
+    text-align: center;
+}
+
+@media (min-width: 992px) {
+    .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
+        top: 100%;
+    }
+
+    header, .navbar-header {
+        height: 150px;
+    }
+
+    .content {
+        padding-top: 150px;
+    }
+
+}
