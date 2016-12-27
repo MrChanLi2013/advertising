@@ -12,6 +12,10 @@ p {
     margin-top: 10px;
 }
 
+.corperate p {
+    font-size: 1.4rem;
+}
+
 .h2-contact {
     margin-top: 20px;
 }
