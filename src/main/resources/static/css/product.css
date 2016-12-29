@@ -38,10 +38,22 @@
     margin-left: -3px;
 }
 
-.on .glyphicon{
+.on .glyphicon {
     display: inline-block;
 }
 
-.off .glyphicon{
+.off .glyphicon {
     display: none;
+}
+
+.product-table .col-xs-8 {
+    color: #c20012;
+}
+
+.product-hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 1px;
+    width: 100%;
+    border-top: 1px dashed #c20012;
 }

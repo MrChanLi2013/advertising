@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-xs-12 col-md-3">
+        图片
+    </div>
+    <div class="col-xs-12 col-md-9">
+        <table class="product-table table table-striped">
+            <tbody>
+            <tr>
+                <td class="col-xs-4">型号</td>
+                <td class="col-xs-8" th:text="${detail.model}"></td>
+            </tr>
+            <tr>
+                <td class="col-xs-4">材料</td>
+                <td class="col-xs-8" th:text="${detail.material}"></td>
+            </tr>
+            <tr>
+                <td class="col-xs-4">尺寸</td>
+                <td class="col-xs-8" th:text="${detail.size}"></td>
+            </tr>
+            <tr>
+                <td class="col-xs-4">备注</td>
+                <td class="col-xs-8" th:text="${detail.remark}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-12">
+        <div class="product-hr"></div>
+    </div>
+</div>
+</body>
+</html>

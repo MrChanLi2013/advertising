@@ -11,22 +11,29 @@
 <body>
 <div layout:fragment="content">
     <div class="row">
-        <div class="group-product">
+        <div class="group-product" th:each="product : ${products}">
             <div class="col-xs-12 col-sm-6 col-md-3 text-center productgroupListingElement">
                 <div class="radio-group">
-                    <div class="title"><span>Composite and Fibres</span></div>
+                    <div class="title"><span th:text="${product.name}"></span></div>
                     <div class="radio-filter">
                         <div class="radio-wrapper">
-                            <a class="radio-botton off" href="#" >
+                            <a class="radio-botton off" href="#">
                                 <span class="radio-button-label"></span><span class="glyphicon glyphicon-ok"></span>
                             </a>
                         </div>
-                        <input type="checkbox" name="11" value="ja" style="position: absolute; top: -200px; left: -200px;"/>
+                        <input type="checkbox" name="product" th:value="${product.id}"
+                               style="position: absolute; top: -200px; left: -200px;"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>GEM顶级单面安全刀片</h3>
+        </div>
+    </div>
+    <div id="js-product-detail"></div>
 </div>
 </body>
 </html>

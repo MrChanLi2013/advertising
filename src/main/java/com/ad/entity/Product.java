@@ -2,6 +2,7 @@ package com.ad.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -22,12 +23,15 @@ public class Product {
     private String seriers;
     @Column
     private String imgUrl;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<ProductDetail> productDetails;
     @Column(name = "parent_id")
     private Integer parentId;
     @Column(name = "created_at")
-    private Date createdAt;
+    private Date createdAt = new Date();
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private Date updatedAt = new Date();
 
     public Integer getId() {
         return id;
@@ -99,5 +103,13 @@ public class Product {
 
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    public List<ProductDetail> getProductDetails() {
+        return productDetails;
+    }
+
+    public void setProductDetails(List<ProductDetail> productDetails) {
+        this.productDetails = productDetails;
     }
 }
