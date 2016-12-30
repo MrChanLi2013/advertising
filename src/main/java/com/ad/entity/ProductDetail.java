@@ -25,7 +25,7 @@ public class ProductDetail {
     @Column
     private String origin;
 
-    @ManyToOne()
+    @OneToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Product product;
 

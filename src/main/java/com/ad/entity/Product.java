@@ -2,7 +2,6 @@ package com.ad.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -24,8 +23,8 @@ public class Product {
     @Column
     private String imgUrl;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private List<ProductDetail> productDetails;
+    @OneToOne(mappedBy = "product", fetch = FetchType.EAGER)
+    private ProductDetail detail;
     @Column(name = "parent_id")
     private Integer parentId;
     @Column(name = "created_at")
@@ -105,11 +104,11 @@ public class Product {
         this.parentId = parentId;
     }
 
-    public List<ProductDetail> getProductDetails() {
-        return productDetails;
+    public ProductDetail getDetail() {
+        return detail;
     }
 
-    public void setProductDetails(List<ProductDetail> productDetails) {
-        this.productDetails = productDetails;
+    public void setDetail(ProductDetail detail) {
+        this.detail = detail;
     }
 }

@@ -6,5 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ProductDao extends CrudRepository<Product, Integer> {
-    List<Product> findByLevel(Integer level);
+    List<Product> findByParentId(Integer id);
+
+    Product findOneById(Integer id);
 }

@@ -12,12 +12,12 @@
 <div layout:fragment="content">
     <div class="row">
         <div class="group-product" th:each="product : ${products}">
-            <div class="col-xs-12 col-sm-6 col-md-3 text-center productgroupListingElement">
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
                 <div class="radio-group">
                     <div class="title"><span th:text="${product.name}"></span></div>
                     <div class="radio-filter">
                         <div class="radio-wrapper">
-                            <a class="radio-botton off" href="#">
+                            <a class="radio-button off" href="#">
                                 <span class="radio-button-label"></span><span class="glyphicon glyphicon-ok"></span>
                             </a>
                         </div>
@@ -27,10 +27,15 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <h3>GEM顶级单面安全刀片</h3>
+        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+            <div class="radio-group" id="js-reset">
+                <div class="title"><span>重置</span></div>
+                <div class="radio-filter">
+                    <div class="radio-wrapper">
+                        <a class="reset" href="#"></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="js-product-detail"></div>

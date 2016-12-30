@@ -21,7 +21,7 @@
     display: inline-block;
 }
 
-.radio-botton {
+.radio-button {
     width: 29px;
     height: 29px;
     color: #c20012;
@@ -30,7 +30,7 @@
     background: #fff;
 }
 
-.radio-botton > .glyphicon {
+.radio-button > .glyphicon {
     display: inline-block;
     color: #c20012;
     font-size: 21px;
@@ -56,4 +56,12 @@
     height: 1px;
     width: 100%;
     border-top: 1px dashed #c20012;
+}
+
+.radio-group .reset {
+    background: #c20012;
+}
+
+#js-reset {
+    cursor: pointer;
 }

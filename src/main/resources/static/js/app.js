@@ -14,20 +14,27 @@ $(function () {
 
     //product js
 
-    $(".radio-botton").click(function () {
-        $.post('/ad/product-list/detail', {id: 1}, function (data) {
-            $('#js-product-detail').append($(data)[5].innerHTML);
-        }, 'html');
-
+    $('.radio-button').click(function () {
+        var id = $(this).parent().next().val();
         if ($(this).hasClass('off')) {
             $(this).removeClass('off');
             $(this).addClass('on');
+            $.post('/ad/product-list/detail', {id: id}, function (data) {
+                $('#js-product-detail').append($(data)[5].innerHTML);
+            }, 'html');
             return;
         }
         if ($(this).hasClass('on')) {
+            $('#product-' + id).remove();
             $(this).removeClass('on');
             $(this).addClass('off');
             return;
         }
-    })
+    });
+
+    $('#js-reset').click(function () {
+        $('#js-product-detail').html('');
+        $('.radio-button').removeClass('on');
+        $('.radio-button').addClass('off');
+    });
 });
