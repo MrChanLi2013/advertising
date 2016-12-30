@@ -38,3 +38,7 @@ $(function () {
         $('.radio-button').addClass('off');
     });
 });
+
+function addToShoppingCart() {
+    $('#js-info').modal('show');
+}

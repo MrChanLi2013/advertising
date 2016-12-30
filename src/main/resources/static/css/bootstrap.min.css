@@ -3393,7 +3393,6 @@ select[multiple].input-lg, textarea.input-lg {
     user-select: none;
     background-image: none;
     border: 1px solid transparent;
-    border-radius: 4px
 }
 
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
@@ -3427,33 +3426,33 @@ a.btn.disabled, fieldset[disabled] a.btn {
 }
 
 .btn-default {
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc
+    color: #fff;
+    background-color: #c20012;
+    border-color: #c20012
 }
 
-.btn-default.focus, .btn-default:focus {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #8c8c8c
+.btn-default.focus, .btn-default:active {
+    color: #fff;
+    background-color: #c20012;
+    border-color: #c20012
 }
 
 .btn-default:hover {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad
+    color: #fff;
+    background-color: #c20012;
+    border-color: #c20012
 }
 
 .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad
+    color: #fff;
+    background-color: #c20012;
+    border-color: #c20012
 }
 
 .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {
-    color: #333;
-    background-color: #d4d4d4;
-    border-color: #8c8c8c
+    color: #fff;
+    background-color: #c20012;
+    border-color: #c20012
 }
 
 .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
@@ -3472,8 +3471,8 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4
+    background-color: #c20012;
+    border-color: #c20012
 }
 
 .btn-primary.focus, .btn-primary:focus {

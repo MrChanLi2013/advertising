@@ -21,7 +21,11 @@
                     <tbody>
                     <tr>
                         <td class="col-xs-4">型号</td>
-                        <td class="col-xs-8" th:text="${product.detail.model}"></td>
+                        <td class="col-xs-8">
+                            <span th:text="${product.detail.model}"></span>
+                            <i class="glyphicon glyphicon-shopping-cart shopping-list"
+                               th:attr="data-target=${product.id}" onclick="addToShoppingCart()"></i>
+                        </td>
                     </tr>
                     <tr>
                         <td class="col-xs-4">材料</td>

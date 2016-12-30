@@ -17,8 +17,12 @@ import java.util.List;
 @RequestMapping("/ad")
 public class ProductController {
 
+    private final ProductDao productDao;
+
     @Autowired
-    private ProductDao productDao;
+    public ProductController(ProductDao productDao) {
+        this.productDao = productDao;
+    }
 
     @RequestMapping(value = "/product-list/{id}", method = RequestMethod.GET)
     public String product(@PathVariable(value = "id") Integer id, Model model) {
@@ -35,5 +39,15 @@ public class ProductController {
         model.addAttribute("list", list);
         model.addAttribute("parent", productDao.findOneById(list.get(0).getParentId()));
         return "tpl/detail";
+    }
+
+    @RequestMapping(value = "/product-list/shopping", method = RequestMethod.GET)
+    public String shoppingList() {
+        return "";
+    }
+
+    @RequestMapping(value = "/product-list/shopping", method = RequestMethod.POST)
+    public String shopping() {
+        return "";
     }
 }

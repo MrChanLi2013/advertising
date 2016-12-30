@@ -65,3 +65,10 @@
 #js-reset {
     cursor: pointer;
 }
+
+.shopping-list {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #c20012;
+}
