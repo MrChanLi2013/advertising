@@ -37,6 +37,26 @@ $(function () {
         $('.radio-button').removeClass('on');
         $('.radio-button').addClass('off');
     });
+
+    $('.member-img').hover(function () {
+        var info = $(this).next();
+        info.css({
+            width: $(this).parent().width(),
+            height: $(this).parent().height()
+        })
+        info.fadeIn();
+        $(this).hide();
+    }, function () {
+
+    })
+
+    $('.info-content').hover(function () {
+
+    }, function () {
+        var img = $(this).parent().find('.member-img');
+        img.show();
+        $(this).hide();
+    })
 });
 
 function addToShoppingCart() {

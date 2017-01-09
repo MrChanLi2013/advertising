@@ -92,6 +92,40 @@ li.open .dropdown-menu li a:before, .blades-ul li.dropdown:hover ul.dropdown-men
     border-bottom: 2px solid #c20012;
 }
 
+#index p {
+    text-indent: 0;
+}
+
+div.divider hr {
+    margin: 40px 0;
+    border-color: #c20012;
+}
+
+.member-img {
+    border-right: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.member-img img {
+    width: 100%;
+}
+
+.info-content {
+    text-align: center !important;
+    background-color: #c20012;
+    color: #fff;
+    display: none;
+    font-size: 14px;
+}
+
+.member-content > div {
+    vertical-align: middle;
+}
+
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
         top: 100%;
