@@ -133,6 +133,14 @@ div.divider hr {
     vertical-align: middle;
 }
 
+.product-process h5 {
+    padding-left: 15px;
+}
+
+.company .title {
+    font-weight: bold;
+}
+
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
         top: 100%;
