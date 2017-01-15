@@ -27,12 +27,9 @@ p {
 
 .blades-ul {
     margin-top: 5rem;
-    margin-left: 10rem;
+    margin-left: 25rem;
 }
 
-.blades-ul-cart {
-    margin-top: 2.5rem;
-}
 
 .blades-ul-cart li a {
     color: #c20012;
