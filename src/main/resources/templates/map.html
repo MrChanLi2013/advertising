@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=4a359f316c1c91457ec076c03a3d9e49"></script>
+    <title>公司地址</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(104.074851,30.546421);
+    map.centerAndZoom(point,12);
+    // 创建地址解析器实例
+    var myGeo = new BMap.Geocoder();
+    // 将地址解析结果显示在地图上,并调整地图视野
+    myGeo.getPoint("成都市天府软件园E区", function(point){
+        if (point) {
+            var marker = new BMap.Marker(point);
+            map.centerAndZoom(point, 16);
+            map.addOverlay(marker);
+
+            var licontent="<b>成都时时刻科技有限责任公司</b><br/>";
+            licontent+="<span><strong>地址：</strong>成都市高新区天府软件园E区1206号</span><br/>";
+            licontent+="<span><strong>电话：</strong>(010)63095718,(010)63095630</span><br/>";
+
+            var opts1 = { width: 300 };
+
+            var  infoWindow = new BMap.InfoWindow(licontent, opts1);
+            marker.openInfoWindow(infoWindow);
+
+        }else{
+            alert("您选择地址没有解析到结果!");
+        }
+    }, "成都市");
+
+
+</script>
