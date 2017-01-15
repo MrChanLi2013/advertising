@@ -41,6 +41,11 @@ public class ProductController {
         return "tpl/detail";
     }
 
+    @RequestMapping(value = "/product-list/detail/{id}", method = RequestMethod.GET)
+    public String getDetail(@PathVariable("id") Integer id, Model model) {
+        return "product_detail";
+    }
+
     @RequestMapping(value = "/product-list/shopping", method = RequestMethod.GET)
     public String shoppingList() {
         return "";

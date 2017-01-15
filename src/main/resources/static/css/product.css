@@ -73,3 +73,13 @@
     cursor: pointer;
     color: #c20012;
 }
+
+.overview {
+    border: 1px dashed #c20012;
+}
+
+.order {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
