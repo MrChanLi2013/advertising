@@ -59,6 +59,8 @@ $(function () {
     })
 });
 
-function addToShoppingCart() {
-    $('#js-info').modal('show');
+function addToShoppingCart(target) {
+    if (sessionStorage.user == undefined) {
+        $('#js-info').modal('show');
+    }
 }

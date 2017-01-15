@@ -24,7 +24,7 @@
             </a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse ad-navbar" role="navigation">
-            <ul class="nav navbar-nav blades-ul navbar-right" id="js-menu">
+            <ul class="nav navbar-nav blades-ul" id="js-menu">
                 <li class="dropdown" id="js-wir">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于我们<mark class="bar"></mark></a>
                     <ul class="dropdown-menu" role="menu">
@@ -60,6 +60,11 @@
                 </li>
                 <li id="js-corperate"><a th:href="@{/ad/corperate}">工作机会<mark class="bar"></mark></a></li>
                 <li id="js-contact"><a href="#" th:href="@{/ad/contact}">联系我们<mark class="bar"></mark></a></li>
+            </ul>
+            <ul class="nav navbar-nav blades-ul-cart navbar-right">
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-shopping-cart shopping-list"></i><span>1</span></a>
+                </li>
             </ul>
         </nav>
     </div>
