@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="headerLayout">
+<head>
+    <title>资料介绍</title>
+    <link type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css.bak}" rel="stylesheet"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <h1>资料下载</h1>
+        <div class="row product-handbook">
+            <div class="col-md-12">
+                <h3>产品手册</h3>
+                <p><a href="#" th:href="@{/file/mozart-blades-catalogue.pdf}" class="download" target="_blank"><i
+                        class="glyphicon glyphicon-download-alt"></i>Blades general catalogue (PDF - 1.3 MB)</a></p>
+                <p><a href="#" th:href="@{/file/mozart-blades-catalogue.pdf}" class="download" target="_blank"><i
+                        class="glyphicon glyphicon-download-alt"></i>Blades general catalogue (PDF - 1.3 MB)</a></p>
+                <p><a href="#" th:href="@{/file/mozart-blades-catalogue.pdf}" class="download" target="_blank"><i
+                        class="glyphicon glyphicon-download-alt"></i>Blades general catalogue (PDF - 1.3 MB)</a></p>
+                <p><a href="#" th:href="@{/file/mozart-blades-catalogue.pdf}" class="download" target="_blank"><i
+                        class="glyphicon glyphicon-download-alt"></i>Blades general catalogue (PDF - 1.3 MB)</a></p>
+                <p><a href="#" th:href="@{/file/mozart-blades-catalogue.pdf}" class="download" target="_blank"><i
+                        class="glyphicon glyphicon-download-alt"></i>Blades general catalogue (PDF - 1.3 MB)</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="divider">
+            <hr/>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row product-handbook">
+            <div class="col-md-12">
+                <h3>视频介绍</h3>
+                <video th:src="@{/video/IMG_3556.MP4}" width="600" height="300" controls="controls">
+                    您的浏览器不支持播放
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
