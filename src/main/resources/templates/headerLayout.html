@@ -24,7 +24,7 @@
             </a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse ad-navbar" role="navigation">
-            <ul class="nav navbar-nav blades-ul" id="js-menu">
+            <ul class="nav navbar-nav blades-ul navbar-right" id="js-menu">
                 <li class="dropdown" id="js-wir">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于我们<mark class="bar"></mark></a>
                     <ul class="dropdown-menu" role="menu">
@@ -48,17 +48,27 @@
                         <li><a href="#">客户定制</a></li>
                     </ul>
                 </li>
-                <li><a href="#">行业动态<mark class="bar"></mark></a></li>
-                <li><a href="#">下载<mark class="bar"></mark></a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">招商加盟<mark class="bar"></mark></a>
+                <li class="dropdown" id="js-anli">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">案例分享<mark class="bar"></mark></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">加盟信息</a></li>
-                        <li><a href="#">成功加盟</a></li>
-                        <li><a href="#">在线加盟</a></li>
+                        <li><a href="#">成功案例</a></li>
+                        <li><a href="#">成功案例</a></li>
                     </ul>
                 </li>
-                <li id="js-corperate"><a th:href="@{/ad/corperate}">工作机会<mark class="bar"></mark></a></li>
+                <li class="dropdown" id="js-download">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">资料下载<mark class="bar"></mark></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">产品手册</a></li>
+                        <li><a href="#">视频介绍</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">行业动态<mark class="bar"></mark></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">行业新闻</a></li>
+                        <li><a href="#">最新信息</a></li>
+                    </ul>
+                </li>
                 <li id="js-contact"><a href="#" th:href="@{/ad/contact}">联系我们<mark class="bar"></mark></a></li>
             </ul>
             <ul class="nav navbar-nav blades-ul-cart navbar-right">
