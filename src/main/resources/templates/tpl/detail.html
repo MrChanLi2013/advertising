@@ -14,17 +14,23 @@
         </div>
         <div class="row" th:each="product : ${list}">
             <div class="col-xs-12 col-md-3">
-                图片
+                <img src="" th:src="${product.imgUrl}" alt="" class="img-responsive"/>
             </div>
             <div class="col-xs-12 col-md-9">
                 <table class="product-table table table-striped">
                     <tbody>
                     <tr>
+                        <td class="col-xs-4">名称</td>
+                        <td class="col-xs-8">
+                            <span th:text="${product.name}"></span>
+                            <i class="glyphicon glyphicon-shopping-cart shopping-list"
+                               th:attr="data-target=${product.id}" onclick="addToShoppingCart(this)"></i>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col-xs-4">型号</td>
                         <td class="col-xs-8">
                             <span th:text="${product.detail.model}"></span>
-                            <i class="glyphicon glyphicon-shopping-cart shopping-list"
-                               th:attr="data-target=${product.id}" onclick="addToShoppingCart(this)"></i>
                         </td>
                     </tr>
                     <tr>
@@ -36,7 +42,7 @@
                         <td class="col-xs-8" th:text="${product.detail.size}"></td>
                     </tr>
                     <tr>
-                        <td class="col-xs-4">备注</td>
+                        <td class="col-xs-4">描述</td>
                         <td class="col-xs-8" th:text="${product.detail.remark}"></td>
                     </tr>
                     </tbody>
