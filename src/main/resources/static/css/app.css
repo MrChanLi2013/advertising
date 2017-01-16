@@ -158,6 +158,41 @@ a.download {
     margin-right: 10px;
 }
 
+.news-title p {
+    text-indent: 0;
+}
+
+.news-title p.new-list {
+    font-size: 15px;
+}
+
+.news-title a {
+    font-size: 15px;
+}
+
+.news-footer p {
+    text-indent: 0;
+}
+
+.news-footer {
+    clear: both;
+    padding: 10px 0 0 0;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+    color: #888;
+}
+
+.news-footer span {
+    display: inline-block;
+    padding-right: 8px;
+    margin-right: 8px;
+    border-right: 1px solid #ddd;
+}
+
+.news-footer span:last-child {
+    border-right: 0;
+}
+
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
         top: 100%;
