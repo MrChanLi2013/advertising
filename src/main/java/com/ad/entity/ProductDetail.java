@@ -24,6 +24,8 @@ public class ProductDetail {
     private String remark;
     @Column
     private String origin;
+    @Column
+    private String detailImg;
 
     @OneToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
@@ -112,5 +114,13 @@ public class ProductDetail {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public String getDetailImg() {
+        return detailImg;
+    }
+
+    public void setDetailImg(String detailImg) {
+        this.detailImg = detailImg;
     }
 }

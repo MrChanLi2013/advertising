@@ -12,6 +12,10 @@ p {
     margin-top: 10px;
 }
 
+a, a:hover, a:focus {
+    color: #c20012;
+}
+
 .corperate p {
     font-size: 1.4rem;
 }
@@ -29,7 +33,6 @@ p {
     margin-top: 5rem;
     margin-left: 25rem;
 }
-
 
 .blades-ul-cart li a {
     color: #c20012;
@@ -147,14 +150,13 @@ a.download {
     font-weight: bold;
 }
 
-.product-handbook p{
+.product-handbook p {
     text-indent: 0;
 }
 
 .product-handbook p i {
     margin-right: 10px;
 }
-
 
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
