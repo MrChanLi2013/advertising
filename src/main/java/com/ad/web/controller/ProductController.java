@@ -1,7 +1,9 @@
 package com.ad.web.controller;
 
 import com.ad.dao.ProductDao;
+import com.ad.dao.ProductDetailDao;
 import com.ad.entity.Product;
+import com.ad.entity.ProductDetail;
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import java.util.List;
 public class ProductController {
 
     private final ProductDao productDao;
+
+    @Autowired
+    private ProductDetailDao productDetailDao;
 
     @Autowired
     public ProductController(ProductDao productDao) {
@@ -43,6 +48,9 @@ public class ProductController {
 
     @RequestMapping(value = "/product-list/detail/{id}", method = RequestMethod.GET)
     public String getDetail(@PathVariable("id") Integer id, Model model) {
+        ProductDetail detail = productDetailDao.findOneByProductId(id);
+        Preconditions.checkNotNull(detail,"未找到商品详情");
+        model.addAttribute("detail", detail);
         return "product_detail";
     }
 

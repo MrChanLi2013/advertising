@@ -58,9 +58,3 @@ $(function () {
         $(this).hide();
     })
 });
-
-function addToShoppingCart(target) {
-    if (sessionStorage.user == undefined) {
-        $('#js-info').modal('show');
-    }
-}

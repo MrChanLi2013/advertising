@@ -18,8 +18,8 @@
             </div>
             <div class="col-md-9">
                 <div class="overview">
-                    <p>产品型号：多款供选</p>
-                    <p>产品描述：GEM Runner单面刀片钢夹背多款供选，009RD，012HD，配合循环安全盒使用，安全环保节能</p>
+                    <p>产品型号：<span th:text="${detail.model}"></span></p>
+                    <p>产品描述：<span th:text="${detail.remark}"></span></p>
                 </div>
                 <a href="#order-info" class="btn btn-default order">产品订购</a>
             </div>
@@ -34,7 +34,7 @@
         <h3>产品细节</h3>
         <div class="row">
             <div class="col-md-12 text-center">
-                <img class="img-responsive center-block" src="../static/images/20170110155457_9766.jpg" alt="" th:src="@{/images/20170110155457_9766.jpg}"/>
+                <img class="img-responsive center-block" th:src="${detail.detailImg}" src="../static/images/20170110155457_9766.jpg" alt="" />
             </div>
         </div>
     </div>
