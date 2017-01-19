@@ -21,7 +21,8 @@ $(function () {
 });
 
 function goTo(url, target) {
-    $(target).css('color', '#fff');
+    $('.menu-a').removeClass('white');
+    $(target).addClass('white');
     $('#js-message').html('');
     $.get(url, {}, function (data) {
         $('#js-right-content').html(data);
@@ -49,6 +50,13 @@ function goTo(url, target) {
         };
         $("#js-new-product").validate($.extend(myRules, custom));
     }, 'html');
+}
+
+function goToPage(target) {
+    $.get($(target).attr('href'), {}, function (data) {
+        $('#js-right-content').html(data);
+    }, 'html');
+    event.preventDefault();
 }
 
 function upoad(target) {

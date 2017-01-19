@@ -6,8 +6,11 @@ import com.ad.entity.PageProductParam;
 import com.ad.entity.Product;
 import com.ad.entity.ProductDetail;
 import com.ad.service.UploadService;
+import com.ad.util.PaginationHelper;
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,6 +52,15 @@ public class ProductController {
         model.addAttribute("list", list);
         model.addAttribute("parent", productDao.findOneById(list.get(0).getParentId()));
         return "tpl/detail";
+    }
+
+    @RequestMapping(value = "/product/list", method = RequestMethod.GET)
+    public String list(Model model, @RequestParam(value = "page",
+            required = false,
+            defaultValue = "1") Integer page) {
+        Page<ProductDetail> productDetail = productDetailDao.findAll(new PageRequest(page - 1, 1));
+        model.addAttribute("page", new PaginationHelper<ProductDetail>(productDetail, "/ad/product/list"));
+        return "admin/product_list";
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.GET)

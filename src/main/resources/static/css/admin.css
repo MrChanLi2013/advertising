@@ -70,4 +70,9 @@ div.panel-heading:hover {
 #js-right-content {
     overflow-y: scroll;
     overflow-x: hidden;
+    padding-left: 10px;
+}
+
+.white {
+    color: #fff !important;
 }
