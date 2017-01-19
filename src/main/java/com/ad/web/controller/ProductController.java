@@ -8,6 +8,8 @@ import com.ad.entity.ProductDetail;
 import com.ad.service.UploadService;
 import com.ad.util.PaginationHelper;
 import com.google.common.base.Preconditions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +26,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/ad")
 public class ProductController {
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     private final ProductDao productDao;
 
@@ -90,6 +93,7 @@ public class ProductController {
             productDao.save(product);
             redirectAttributes.addFlashAttribute("message", "上传产品成功");
         } catch (Exception e) {
+            logger.error(e.getMessage());
             redirectAttributes.addFlashAttribute("message", String.format("上传产品失败[%s]", e.getMessage()));
         }
         return "redirect:/ad/admin/index";
