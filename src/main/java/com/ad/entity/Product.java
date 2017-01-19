@@ -19,11 +19,9 @@ public class Product {
     @Column
     private String descrption;
     @Column
-    private String seriers;
-    @Column
     private String imgUrl;
 
-    @OneToOne(mappedBy = "product", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private ProductDetail detail;
     @Column(name = "parent_id")
     private Integer parentId;
@@ -62,14 +60,6 @@ public class Product {
 
     public void setDescrption(String descrption) {
         this.descrption = descrption;
-    }
-
-    public String getSeriers() {
-        return seriers;
-    }
-
-    public void setSeriers(String seriers) {
-        this.seriers = seriers;
     }
 
     public String getImgUrl() {

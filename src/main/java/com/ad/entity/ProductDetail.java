@@ -11,8 +11,6 @@ public class ProductDetail {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "product_id", insertable = false, updatable = false)
-    private Integer productId;
 
     @Column
     private String model;
@@ -28,7 +26,7 @@ public class ProductDetail {
     private String detailImg;
 
     @OneToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id", nullable = false, referencedColumnName = "id", insertable = true, updatable = true)
     private Product product;
 
     @Column(name = "created_at")
@@ -100,13 +98,6 @@ public class ProductDetail {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
 
     public Product getProduct() {
         return product;
