@@ -15,15 +15,15 @@ $(function () {
         $(this).parent().find('.panel-heading').addClass('header-active');
     })
 
-    $('#init').on('click', function () {
-        goTo('/ad/product/add');
-    }).trigger('click');
+    $('#init').trigger('click');
 });
 
 function goTo(url, target) {
     $('.menu-a').removeClass('white');
     $(target).addClass('white');
-    $('#js-message').html('');
+    setTimeout(function () {
+        $('#js-message').find('.alert').alert('close');
+    }, 2000)
     $.get(url, {}, function (data) {
         $('#js-right-content').html(data);
         var myRules = {
