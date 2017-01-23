@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/ad")
+@RequestMapping
 public class ProductController {
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
@@ -40,7 +40,7 @@ public class ProductController {
         this.productDao = productDao;
     }
 
-    @RequestMapping(value = "/product-list/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/ad/product-list/{id}", method = RequestMethod.GET)
     public String product(@PathVariable(value = "id") Integer id, Model model) {
         List<Product> list = productDao.findByParentId(id);
         Preconditions.checkState(!list.isEmpty(), String.format("未找到id为[%s]的产品.", id));
@@ -48,7 +48,7 @@ public class ProductController {
         return "product";
     }
 
-    @RequestMapping(value = "/product-list/detail", method = RequestMethod.POST)
+    @RequestMapping(value = "/ad/product-list/detail", method = RequestMethod.POST)
     public String detail(@RequestParam("id") Integer id, Model model) {
         List<Product> list = productDao.findByParentId(id);
         Preconditions.checkState(!list.isEmpty(), String.format("未找到id为[%s]的产品.", id));
@@ -57,29 +57,29 @@ public class ProductController {
         return "tpl/detail";
     }
 
-    @RequestMapping(value = "/product/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/product/list", method = RequestMethod.GET)
     public String list(Model model, @RequestParam(value = "page",
             required = false,
             defaultValue = "1") Integer page) {
         Page<ProductDetail> productDetail = productDetailDao.findAll(new PageRequest(page - 1, 1));
-        model.addAttribute("page", new PaginationHelper<ProductDetail>(productDetail, "/ad/product/list"));
+        model.addAttribute("page", new PaginationHelper<ProductDetail>(productDetail, "/admin/product/list"));
         return "admin/product_list";
     }
 
-    @RequestMapping(value = "/product/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/product/add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("category", productDao.findByParentId(0));
         return "admin/new";
     }
 
-    @RequestMapping(value = "/product/update/{detailId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/product/update/{detailId}", method = RequestMethod.GET)
     public String update(@PathVariable("detailId") Integer detailId, Model model) {
         model.addAttribute("detail", productDetailDao.findOne(detailId));
         model.addAttribute("category", productDao.findByParentId(0));
         return "admin/update";
     }
 
-    @RequestMapping(value = "/product/update/{detailId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/product/update/{detailId}", method = RequestMethod.POST)
     public String updateProduct(@PathVariable("detailId") Integer detailId,
                                 PageProductParam param, RedirectAttributes redirectAttributes) {
         ProductDetail productDetail = productDetailDao.findOne(detailId);
@@ -101,10 +101,10 @@ public class ProductController {
         }
         productDetailDao.save(productDetail);
         redirectAttributes.addFlashAttribute("message", "修改成功");
-        return "redirect:/ad/admin/index";
+        return "redirect:/admin/admin/index";
     }
 
-    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/product/add", method = RequestMethod.POST)
     public String addProduct(PageProductParam param, RedirectAttributes redirectAttributes) {
 
         try {
@@ -129,7 +129,7 @@ public class ProductController {
             logger.error(e.getMessage());
             redirectAttributes.addFlashAttribute("message", String.format("上传产品失败[%s]", e.getMessage()));
         }
-        return "redirect:/ad/admin/index";
+        return "redirect:/admin/index";
     }
 
     @RequestMapping(value = "/product-list/detail/{id}", method = RequestMethod.GET)

@@ -1,0 +1,21 @@
+body {
+    background-color: #f9f9f9;
+}
+
+.title {
+    margin: 100px auto 0 auto;
+    width: 340px;
+}
+
+.title h1 {
+    font-size: 20px;
+}
+
+.login {
+    width: 340px;
+    border: 1px solid #d8dee2;
+    padding: 20px;
+    font-size: 14px;
+    background-color: #fff;
+    margin: 0 auto;
+}

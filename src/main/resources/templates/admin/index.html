@@ -24,8 +24,8 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" th:href="@{/ad/contact}">管理员</a></li>
-                <li><a href="#" th:href="@{/ad/contact}">退出</a></li>
+                <li><a href="javascript:void(0)" th:text="${#httpServletRequest.remoteUser}">管理员</a></li>
+                <li><a href="#" th:href="@{/admin/logout}">退出</a></li>
             </ul>
         </nav>
     </div>
@@ -51,12 +51,13 @@
                                 <div id="collapseOne" class="panel-collapse collapse in js-collapse" role="tabpanel"
                                      aria-labelledby="headingOne">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><a href="javascript:void(0)" id="init" class="menu-a"
-                                                                       onclick="goTo('/ad/product/list', this)"><i
+                                        <li class="list-group-item"><a href="javascript:void(0)" id="init"
+                                                                       class="menu-a"
+                                                                       onclick="goTo('/admin/product/list', this)"><i
                                                 class="fa fa-circle-o"></i>产品列表</a>
                                         </li>
                                         <li class="list-group-item"><a href="javascript:void(0)" class="menu-a"
-                                                                       onclick="goTo('/ad/product/add', this)"><i
+                                                                       onclick="goTo('/admin/product/add', this)"><i
                                                 class="fa fa-circle-o"></i>新增产品</a>
                                         </li>
                                     </ul>
@@ -75,7 +76,7 @@
                                 <div id="collapseTwo" class="panel-collapse collapse js-collapse" role="tabpanel"
                                      aria-labelledby="headingTwo">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><a href="#" onclick="goTo('/ad/product/add')"><i
+                                        <li class="list-group-item"><a href="#" onclick="goTo('/admin/product/add')"><i
                                                 class="fa fa-circle-o"></i>新增产品</a>
                                         </li>
                                         <li class="list-group-item"><a href="#"><i class="fa fa-circle-o"></i>新增产品</a>
