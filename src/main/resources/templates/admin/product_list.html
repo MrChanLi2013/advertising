@@ -10,22 +10,23 @@
     <div class="col-md-12">
         <table class="table table-bordered">
             <thead>
-                <tr>
-                    <th>名称</th>
-                    <th>型号</th>
-                    <th>材料</th>
-                    <th>尺寸</th>
-                    <th>操作</th>
-                </tr>
+            <tr>
+                <th>名称</th>
+                <th>型号</th>
+                <th>材料</th>
+                <th>尺寸</th>
+                <th>操作</th>
+            </tr>
             </thead>
             <tbody>
-                <tr th:each="detail : ${page.page}">
-                    <td th:text="${detail.product.name}"></td>
-                    <td th:text="${detail.model}"></td>
-                    <td th:text="${detail.material}"></td>
-                    <td th:text="${detail.size}"></td>
-                    <td><a href="#">修改</a> | <a href="">删除</a></td>
-                </tr>
+            <tr th:each="detail : ${page.page}">
+                <td th:text="${detail.product.name}"></td>
+                <td th:text="${detail.model}"></td>
+                <td th:text="${detail.material}"></td>
+                <td th:text="${detail.size}"></td>
+                <td><a href="#" th:href="@{/ad/product/update/{id}(id=${detail.id})}" onclick="updateProduct(this)">修改</a> |
+                    <a href="">删除</a></td>
+            </tr>
             </tbody>
         </table>
         <nav class="pagination-nav">
@@ -39,7 +40,8 @@
                 <li th:each="item : ${page.getItems()}" th:class="${item.isCurrent()}? 'active' : ''">
                     <a th:if="${item.isCurrent()}" onclick="javascript:void(0);" th:text="${item.getNumber()}"></a>
                     <a th:if="${not item.isCurrent()}"
-                       th:href="@{${page.url}(page=${item.getNumber()})}" onclick="goToPage(this)" th:text="${item.getNumber()}"></a>
+                       th:href="@{${page.url}(page=${item.getNumber()})}" onclick="goToPage(this)"
+                       th:text="${item.getNumber()}"></a>
                 </li>
                 <li th:class="${page.hasNext()}? '' : 'disabled'">
                     <span th:if="${not page.hasNext()}">下一页</span>

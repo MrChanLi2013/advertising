@@ -67,8 +67,41 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.GET)
-    public String add() {
+    public String add(Model model) {
+        model.addAttribute("category", productDao.findByParentId(0));
         return "admin/new";
+    }
+
+    @RequestMapping(value = "/product/update/{detailId}", method = RequestMethod.GET)
+    public String update(@PathVariable("detailId") Integer detailId, Model model) {
+        model.addAttribute("detail", productDetailDao.findOne(detailId));
+        model.addAttribute("category", productDao.findByParentId(0));
+        return "admin/update";
+    }
+
+    @RequestMapping(value = "/product/update/{detailId}", method = RequestMethod.POST)
+    public String updateProduct(@PathVariable("detailId") Integer detailId, PageProductParam param, Model model) {
+        ProductDetail productDetail = productDetailDao.findOne(detailId);
+        productDetail.getProduct().setName(param.getName());
+        productDetail.setMaterial(param.getMaterial());
+        productDetail.setModel(param.getModel());
+        productDetail.setRemark(param.getRemark());
+        productDetail.setSize(param.getSize());
+        productDetail.getProduct().setParentId(param.getParentId());
+        System.out.println("---------" + param.getDetail().getOriginalFilename());
+        System.out.println("---------" + param.getImg().getOriginalFilename());
+        if (!param.getDetail().getOriginalFilename().equals("") &&
+                !("/products/" + param.getDetail().getOriginalFilename()).equals(productDetail.getDetailImg())) {
+            productDetail.setDetailImg("/products/" + param.getDetail().getOriginalFilename());
+            uploadService.upload(param.getDetail());
+        }
+        if (!param.getImg().getOriginalFilename().equals("") &&
+                !("/products/" + param.getImg().getOriginalFilename()).equals(productDetail.getProduct().getImgUrl())) {
+            productDetail.getProduct().setImgUrl("/produts/" + param.getImg().getOriginalFilename());
+            uploadService.upload(param.getImg());
+        }
+        productDetailDao.save(productDetail);
+        return "redirect:/ad/admin/index";
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
@@ -82,7 +115,7 @@ public class ProductController {
             product.setParentId(param.getParentId());
             product.setImgUrl("/products/" + param.getImg().getOriginalFilename());
             uploadService.upload(param.getImg());
-            detail.setMaterial(param.getMeaterial());
+            detail.setMaterial(param.getMaterial());
             detail.setModel(param.getModel());
             detail.setRemark(param.getRemark());
             detail.setSize(param.getSize());

@@ -34,7 +34,7 @@ function goTo(url, target) {
                 model: {
                     required: true
                 },
-                meaterial: {
+                material: {
                     required: true
                 },
                 size: {
@@ -62,4 +62,16 @@ function goToPage(target) {
 function upoad(target) {
     var name = target.files[0].name;
     $(target).parent().parent().find('.js-filename').text(name);
+}
+
+function updateProductUploadImg(target) {
+    var name = target.files[0].name;
+    $(target).parent().parent().find('.js-filename').val(name);
+}
+
+function updateProduct(target) {
+    $.get($(target).attr('href'), {}, function (data) {
+        $('#js-right-content').html(data);
+    }, 'html');
+    event.preventDefault();
 }

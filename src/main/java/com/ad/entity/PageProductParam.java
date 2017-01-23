@@ -9,7 +9,7 @@ public class PageProductParam {
     private String remark;
     private MultipartFile img;
     private MultipartFile detail;
-    private String meaterial;
+    private String material;
     private String size;
 
     public String getName() {
@@ -44,12 +44,12 @@ public class PageProductParam {
         this.remark = remark;
     }
 
-    public String getMeaterial() {
-        return meaterial;
+    public String getMaterial() {
+        return material;
     }
 
-    public void setMeaterial(String meaterial) {
-        this.meaterial = meaterial;
+    public void setMaterial(String material) {
+        this.material = material;
     }
 
     public String getSize() {

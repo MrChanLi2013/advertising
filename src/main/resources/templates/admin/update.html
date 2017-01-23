@@ -2,18 +2,19 @@
     <div class="col-md-12 pd-left-0 pd-right-0">
         <ol class="breadcrumb">
             <li><a href="#">产品管理</a></li>
-            <li class="active">新增产品</li>
+            <li class="active">修改产品</li>
         </ol>
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
-        <form class="form-horizontal" id="js-new-product" role="form" enctype="multipart/form-data" th:action="@{/ad/product/add}"
+        <form class="form-horizontal" id="js-update-product" role="form" enctype="multipart/form-data"
+              th:action="@{/ad/product/update/{detailId}(detailId=${detail.id})}"
               method="post">
             <div class="form-group">
                 <label class="col-sm-3 control-label">名称：</label>
                 <div class="col-sm-9 need-validate">
-                    <input type="text" name="name" class="form-control"/>
+                    <input type="text" name="name" class="form-control" th:value="${detail.product.name}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -22,6 +23,7 @@
                     <select class="form-control" name="parentId">
                         <option th:each="category : ${category}"
                                 th:value="${category.id}"
+                                th:selected="${ category.id == detail.product.parentId } "
                                 th:text="${category.name}"></option>
                     </select>
                 </div>
@@ -29,47 +31,49 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">型号：</label>
                 <div class="col-sm-9 need-validate">
-                    <input type="text" name="model" class="form-control"/>
+                    <input type="text" name="model" th:value="${detail.model}" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">材料：</label>
                 <div class="col-sm-9 need-validate">
-                    <input type="text" name="material" class="form-control"/>
+                    <input type="text" name="material" th:value="${detail.material}" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">尺寸：</label>
                 <div class="col-sm-9 need-validate">
-                    <input type="text" name="size" class="form-control"/>
+                    <input type="text" name="size" th:value="${detail.size}" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">备注：</label>
                 <div class="col-sm-9">
-                    <input type="text" name="remark" class="form-control"/>
+                    <input type="text" name="remark" th:value="${detail.remark}" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">产品缩略图：</label>
                 <div class="col-sm-9 need-validate">
-                    <span class="btn btn-success fileinput-button">
+                    <input type="text" class="form-control js-filename" disabled="disabled" th:value="${detail.product.imgUrl}" />
+                    <span class="btn btn-success fileinput-button" style="margin-top: 5px">
                         <i class="glyphicon glyphicon-plus"></i>
-                        <span>选择文件</span>
-                        <input type="file" name="img" multiple="" onchange="upoad(this)"/>
+                        <span>重新上传</span>
+                        <input type="file" name="img" multiple="" onchange="updateProductUploadImg(this)"/>
                     </span>
-                    <span class="js-filename"></span>
+                    <!--<button type="button" class="btn btn-default" style="margin-top: 5px">查看原图</button>-->
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">详情：</label>
                 <div class="col-sm-9 need-validate">
-                    <span class="btn btn-success fileinput-button">
+                    <input type="text" class="form-control js-filename" disabled="disabled" th:value="${detail.detailImg}" />
+                    <span class="btn btn-success fileinput-button" style="margin-top: 5px">
                         <i class="glyphicon glyphicon-plus"></i>
-                        <span>选择文件</span>
-                        <input type="file" name="detail" multiple="" onchange="upoad(this)"/>
+                        <span>重新上传</span>
+                        <input type="file" name="detail" multiple="" onchange="updateProductUploadImg(this)"/>
                     </span>
-                    <span class="js-filename"></span>
+                    <!--<button type="button" class="btn btn-default" style="margin-top: 5px">查看原图</button>-->
                 </div>
             </div>
             <div class="modal-footer">
