@@ -80,7 +80,8 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/product/update/{detailId}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable("detailId") Integer detailId, PageProductParam param, Model model) {
+    public String updateProduct(@PathVariable("detailId") Integer detailId,
+                                PageProductParam param, RedirectAttributes redirectAttributes) {
         ProductDetail productDetail = productDetailDao.findOne(detailId);
         productDetail.getProduct().setName(param.getName());
         productDetail.setMaterial(param.getMaterial());
@@ -88,8 +89,6 @@ public class ProductController {
         productDetail.setRemark(param.getRemark());
         productDetail.setSize(param.getSize());
         productDetail.getProduct().setParentId(param.getParentId());
-        System.out.println("---------" + param.getDetail().getOriginalFilename());
-        System.out.println("---------" + param.getImg().getOriginalFilename());
         if (!param.getDetail().getOriginalFilename().equals("") &&
                 !("/products/" + param.getDetail().getOriginalFilename()).equals(productDetail.getDetailImg())) {
             productDetail.setDetailImg("/products/" + param.getDetail().getOriginalFilename());
@@ -101,6 +100,7 @@ public class ProductController {
             uploadService.upload(param.getImg());
         }
         productDetailDao.save(productDetail);
+        redirectAttributes.addFlashAttribute("message", "修改成功");
         return "redirect:/ad/admin/index";
     }
 
