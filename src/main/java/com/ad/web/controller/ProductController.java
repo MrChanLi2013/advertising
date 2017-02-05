@@ -132,21 +132,11 @@ public class ProductController {
         return "redirect:/admin/index";
     }
 
-    @RequestMapping(value = "/product-list/detail/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/ad/product-list/detail/{id}", method = RequestMethod.GET)
     public String getDetail(@PathVariable("id") Integer id, Model model) {
         ProductDetail detail = productDetailDao.findOneByProductId(id);
         Preconditions.checkNotNull(detail, "未找到商品详情");
         model.addAttribute("detail", detail);
         return "product_detail";
-    }
-
-    @RequestMapping(value = "/product-list/shopping", method = RequestMethod.GET)
-    public String shoppingList() {
-        return "";
-    }
-
-    @RequestMapping(value = "/product-list/shopping", method = RequestMethod.POST)
-    public String shopping() {
-        return "";
     }
 }
