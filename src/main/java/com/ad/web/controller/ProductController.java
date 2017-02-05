@@ -11,6 +11,7 @@ import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,9 @@ public class ProductController {
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     private final ProductDao productDao;
+
+    @Value("${page.size}")
+    private Integer pageSize;
 
     @Autowired
     private ProductDetailDao productDetailDao;
@@ -61,21 +65,21 @@ public class ProductController {
     public String list(Model model, @RequestParam(value = "page",
             required = false,
             defaultValue = "1") Integer page) {
-        Page<ProductDetail> productDetail = productDetailDao.findAll(new PageRequest(page - 1, 5));
+        Page<ProductDetail> productDetail = productDetailDao.findAll(new PageRequest(page - 1, pageSize));
         model.addAttribute("page", new PaginationHelper<ProductDetail>(productDetail, "/admin/product/list"));
         return "admin/product_list";
     }
 
     @RequestMapping(value = "/admin/product/add", method = RequestMethod.GET)
     public String add(Model model) {
-        model.addAttribute("category", productDao.findByParentId(0));
+        model.addAttribute("category", productDao.findByParentId(1));
         return "admin/new";
     }
 
     @RequestMapping(value = "/admin/product/update/{detailId}", method = RequestMethod.GET)
     public String update(@PathVariable("detailId") Integer detailId, Model model) {
         model.addAttribute("detail", productDetailDao.findOne(detailId));
-        model.addAttribute("category", productDao.findByParentId(0));
+        model.addAttribute("category", productDao.findByParentId(1));
         return "admin/update";
     }
 
