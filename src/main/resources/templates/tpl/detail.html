@@ -22,9 +22,9 @@
                     <tr>
                         <td class="col-xs-4">名称</td>
                         <td class="col-xs-8">
-                            <span><a href="#" th:href="@{/ad/product-list/detail/{id}(id=${product.id})}" th:text="${product.name}"></a></span>
-                            <i class="glyphicon glyphicon-shopping-cart shopping-list"
-                               th:attr="data-target=${product.id}"></i>
+                            <span><a href="#" th:href="@{/ad/product-list/detail/{id}(id=${product.id})}"
+                                     th:text="${product.name}"></a></span>
+                            <span><a class="shopping-list" href="#" th:href="@{/ad/product-list/detail/{id}(id=${product.id})}">查看详情</a></span>
                         </td>
                     </tr>
                     <tr>
