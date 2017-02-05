@@ -143,4 +143,33 @@ public class ProductController {
         model.addAttribute("detail", detail);
         return "product_detail";
     }
+
+
+    @RequestMapping(value = "/ad/product/order", method = RequestMethod.POST)
+    public String order(PageProductParam param, RedirectAttributes redirectAttributes) {
+
+        try {
+            Product product = new Product();
+            ProductDetail detail = new ProductDetail();
+            product.setLevel(2);
+            product.setName(param.getName());
+            product.setParentId(param.getParentId());
+            product.setImgUrl("/products/" + param.getImg().getOriginalFilename());
+            uploadService.upload(param.getImg());
+            detail.setMaterial(param.getMaterial());
+            detail.setModel(param.getModel());
+            detail.setRemark(param.getRemark());
+            detail.setSize(param.getSize());
+            detail.setDetailImg("/products/" + param.getDetail().getOriginalFilename());
+            uploadService.upload(param.getDetail());
+            detail.setProduct(product);
+            product.setDetail(detail);
+            productDao.save(product);
+            redirectAttributes.addFlashAttribute("message", "上传产品成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            redirectAttributes.addFlashAttribute("message", String.format("上传产品失败[%s]", e.getMessage()));
+        }
+        return "success";
+    }
 }
