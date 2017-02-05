@@ -7,6 +7,14 @@ $(function () {
         $(this).removeClass('open');
     });
 
+
+    $("#js-order-btn").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#order-info").offset().top - 150
+        }, 1000);
+    });
+
+
     var links = window.location.pathname.split('/');
     var secondaryUrl = links[2];
     $('#js-menu').find('li.dropdown').removeClass('active');
