@@ -11,21 +11,22 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>名称</th>
-                <th>型号</th>
-                <th>材料</th>
-                <th>尺寸</th>
-                <th>操作</th>
+                <th>姓名</th>
+                <th>联系电话</th>
+                <th>产品型号</th>
+                <th>地址</th>
+                <th>公司名称</th>
+                <th>备注</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="detail : ${page.page}">
-                <td th:text="${detail.product.name}"></td>
-                <td th:text="${detail.model}"></td>
-                <td th:text="${detail.material}"></td>
-                <td th:text="${detail.size}"></td>
-                <td><a href="#" th:href="@{/admin/product/update/{id}(id=${detail.id})}" onclick="updateProduct(this)">修改</a> |
-                    <a href="">删除</a></td>
+            <tr th:each="order : ${page.page}">
+                <td th:text="${order.name}"></td>
+                <td th:text="${order.phone}"></td>
+                <td th:text="${order.order}"></td>
+                <td th:text="${order.address}"></td>
+                <td th:text="${order.companyName}"></td>
+                <td th:text="${order.remark}"></td>
             </tr>
             </tbody>
         </table>
