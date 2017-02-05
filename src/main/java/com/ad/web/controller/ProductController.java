@@ -61,7 +61,7 @@ public class ProductController {
     public String list(Model model, @RequestParam(value = "page",
             required = false,
             defaultValue = "1") Integer page) {
-        Page<ProductDetail> productDetail = productDetailDao.findAll(new PageRequest(page - 1, 1));
+        Page<ProductDetail> productDetail = productDetailDao.findAll(new PageRequest(page - 1, 5));
         model.addAttribute("page", new PaginationHelper<ProductDetail>(productDetail, "/admin/product/list"));
         return "admin/product_list";
     }
@@ -101,7 +101,7 @@ public class ProductController {
         }
         productDetailDao.save(productDetail);
         redirectAttributes.addFlashAttribute("message", "修改成功");
-        return "redirect:/admin/admin/index";
+        return "redirect:/admin/index";
     }
 
     @RequestMapping(value = "/admin/product/add", method = RequestMethod.POST)
