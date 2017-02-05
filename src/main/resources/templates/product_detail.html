@@ -47,7 +47,7 @@
         <h3>订购信息</h3>
         <div class="row">
             <div class="col-md-6">
-                <form class="form-horizontal" id="js-new-product" role="form" th:action="@{/ad/order}" method="post">
+                <form class="form-horizontal" id="js-new-order" role="form" th:action="@{/ad/order}" method="post">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="input-name" class="col-sm-3 control-label">姓名：</label>
@@ -59,13 +59,14 @@
                             <label for="input-company" class="col-sm-3 control-label">公司名称：</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="companyName" id="input-company" placeholder="公司名称"/>
+                                <input type="hidden" name="model" th:text="${detail.model}"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">地址：</label>
                             <div class="col-sm-9">
                                 <div data-toggle="distpicker">
-                                    <select data-province="---- 选择省 ----" class="form-control" name="prov" style="display:inline-block;width: 30%"></select>
+                                    <select data-province="---- 选择省 ----" class="form-control" name="province" style="display:inline-block;width: 30%"></select>
                                     <select data-city="---- 选择市 ----" class="form-control" name="city" style="display:inline-block;width: 30%"></select>
                                     <select data-district="---- 选择区 ----" class="form-control" name="area" style="display:inline-block;width: 37.8%"></select>
                                 </div>
@@ -92,7 +93,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-default">确定</button>
+                        <button type="button" class="btn btn-default" id="js-create-order">确定</button>
                     </div>
                 </form>
             </div>

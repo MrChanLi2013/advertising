@@ -2,7 +2,7 @@ package com.ad.web.controller;
 
 import com.ad.dao.OrderDao;
 import com.ad.entity.Order;
-import com.ad.entity.PageProductParam;
+import com.ad.entity.PageOrderParam;
 import com.ad.util.PaginationHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping
@@ -28,15 +28,16 @@ public class OrderController {
     private OrderDao orderDao;
 
     @RequestMapping(value = "/ad/order", method = RequestMethod.POST)
-    public String order(PageProductParam param, RedirectAttributes redirectAttributes) {
-
+    @ResponseBody
+    public String order(PageOrderParam param) {
         try {
-
+            Order order = new Order(param);
+            orderDao.save(order);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            redirectAttributes.addFlashAttribute("message", String.format("上传产品失败[%s]", e.getMessage()));
+            return "0";
         }
-        return "success";
+        return "1";
     }
 
     @RequestMapping(value = "/admin/order", method = RequestMethod.GET)

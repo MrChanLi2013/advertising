@@ -1,5 +1,7 @@
 package com.ad.entity;
 
+import org.aspectj.weaver.ast.Or;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,6 +30,18 @@ public class Order {
     private Date createdAt = new Date();
     @Column(name = "updated_at")
     private Date updatedAt = new Date();
+
+    public Order(){}
+
+    public Order(PageOrderParam pageOrderParam) {
+        this.name = pageOrderParam.getName();
+        this.companyName = pageOrderParam.getCompanyName();
+        this.model = pageOrderParam.getModel();
+        this.address = pageOrderParam.getProvince() + pageOrderParam.getCity() + pageOrderParam.getArea();
+        this.phone = pageOrderParam.getPhone();
+        this.email = pageOrderParam.getEmail();
+        this.remark = pageOrderParam.getRemark();
+    }
 
     public Integer getId() {
         return id;

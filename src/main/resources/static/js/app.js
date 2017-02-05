@@ -8,10 +8,20 @@ $(function () {
     });
 
 
-    $("#js-order-btn").click(function() {
+    $("#js-order-btn").click(function () {
         $('html, body').animate({
             scrollTop: $("#order-info").offset().top - 150
         }, 1000);
+    });
+
+    $("#js-create-order").click(function () {
+        $.post('/ad/order', $('#js-new-order').serialize(), function (data) {
+            if (data == 1) {
+                alert("订购成功");
+            } else {
+                alert("订购失败")
+            }
+        }, 'json');
     });
 
 
