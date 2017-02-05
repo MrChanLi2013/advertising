@@ -17,8 +17,6 @@ public class Product {
     @Column
     private String name;
     @Column
-    private String descrption;
-    @Column
     private String imgUrl;
 
     @OneToOne(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -52,14 +50,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescrption() {
-        return descrption;
-    }
-
-    public void setDescrption(String descrption) {
-        this.descrption = descrption;
     }
 
     public String getImgUrl() {
