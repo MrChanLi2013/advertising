@@ -143,4 +143,18 @@ public class ProductController {
         model.addAttribute("detail", detail);
         return "product_detail";
     }
+
+    @RequestMapping(value = "/admin/product/delete", method = RequestMethod.GET)
+    public String deleteProduct(@RequestParam("id") Integer id,
+                                PageProductParam param, RedirectAttributes redirectAttributes) {
+        ProductDetail detail = productDetailDao.findOneByProductId(id);
+        if(detail != null){
+            productDetailDao.delete(detail);
+        }
+        Product product = productDao.findOneById(id);
+        if(product != null){
+            productDao.delete(product);
+        }
+        return "redirect:/admin/index";
+    }
 }

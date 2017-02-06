@@ -14,7 +14,7 @@
         <h3>产品概要</h3>
         <div class="row">
             <div class="col-md-3">
-                <img src="../static/images/guide.jpg" class="img-responsive" alt="" th:src="@{/images/guide.jpg}" />
+                <img src="" th:src="${detail.product.imgUrl}" class="img-responsive" alt="" />
             </div>
             <div class="col-md-9">
                 <div class="overview">
@@ -59,7 +59,7 @@
                             <label for="input-company" class="col-sm-3 control-label">公司名称：</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="companyName" id="input-company" placeholder="公司名称"/>
-                                <input type="hidden" name="model" th:text="${detail.model}"/>
+                                <input type="hidden" name="model" th:value="${detail.model}"/>
                             </div>
                         </div>
                         <div class="form-group">
