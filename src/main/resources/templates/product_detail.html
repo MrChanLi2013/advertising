@@ -7,6 +7,7 @@
     <link type="text/css" href="../static/css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css.bak}" rel="stylesheet"/>
     <link type="text/css" href="../static/css/product.css" rel="stylesheet" th:href="@{/css/product.css}"/>
+    <link type="text/css" href="../static/css/validate.css" th:href="@{/css/validate.css}" rel="stylesheet"/>
 </head>
 <body>
 <div layout:fragment="content">
@@ -51,20 +52,20 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="input-name" class="col-sm-3 control-label">姓名：</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9 need-validate">
                                 <input type="text" class="form-control" id="input-name" name="name" placeholder="姓名"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="input-company" class="col-sm-3 control-label">公司名称：</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9 need-validate">
                                 <input type="text" class="form-control" name="companyName" id="input-company" placeholder="公司名称"/>
                                 <input type="hidden" name="model" th:value="${detail.model}"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">地址：</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9 need-validate">
                                 <div data-toggle="distpicker">
                                     <select data-province="---- 选择省 ----" class="form-control" name="province" style="display:inline-block;width: 30%"></select>
                                     <select data-city="---- 选择市 ----" class="form-control" name="city" style="display:inline-block;width: 30%"></select>
@@ -74,13 +75,13 @@
                         </div>
                         <div class="form-group">
                             <label for="input-phone" class="col-sm-3 control-label">联系电话：</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9 need-validate">
                                 <input type="text" class="form-control" name="phone" id="input-phone" placeholder="联系电话"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="input-email" class="col-sm-3 control-label">电子邮箱：</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9 need-validate">
                                 <input type="email" class="form-control" name="email" id="input-email" placeholder="电子邮箱"/>
                             </div>
                         </div>

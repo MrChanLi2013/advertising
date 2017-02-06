@@ -15,13 +15,54 @@ $(function () {
     });
 
     $("#js-create-order").click(function () {
-        $.post('/ad/order', $('#js-new-order').serialize(), function (data) {
-            if (data == 1) {
-                alert("订购成功");
-            } else {
-                alert("订购失败")
+        var myRules = {
+            rules: {
+                name: {
+                    required: true
+                },
+                companyName: {
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                province: {
+                    required: true
+                },
+                city: {
+                    required: true
+                },
+                area: {
+                    required: true
+                }
+            },
+            messages: {
+                province: {
+                    required: "请选择省份"
+                },
+                city: {
+                    required: "请选择市区"
+                },
+                area: {
+                    required: '请选择区县'
+                }
             }
-        }, 'json');
+        };
+        $("#js-new-order").validate($.extend(myRules, custom));
+        var valid = $("#js-new-order").valid();
+        if (valid) {
+            $.post('/ad/order', $('#js-new-order').serialize(), function (data) {
+                if (data == 1) {
+                    alert("订购成功");
+                } else {
+                    alert("订购失败")
+                }
+            }, 'json');
+        }
     });
 
 

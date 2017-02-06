@@ -1,5 +1,6 @@
 jQuery.extend(jQuery.validator.messages, {
-    required: "该项不能为空"
+    required: "该项不能为空",
+    email: "请填写正确格式的邮箱"
 });
 
 var custom = {
