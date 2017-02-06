@@ -11,21 +11,22 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>姓名</th>
-                <th>联系电话</th>
-                <th>产品型号</th>
-                <th>地址</th>
-                <th>公司名称</th>
+                <th width="60px">姓名</th>
+                <th width="120px">联系电话</th>
+                <th width="120px">产品型号</th>
+                <th width="120px">地址</th>
+                <th width="120px">公司名称</th>
                 <th>备注</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="order : ${page.page}">
-                <td th:text="${order.name}"></td>
+                <td th:text="${order.name}" ></td>
                 <td th:text="${order.phone}"></td>
                 <td th:text="${order.model}"></td>
                 <td th:text="${order.address}"></td>
                 <td th:text="${order.companyName}"></td>
+                <!--<td th:text="${#strings.substring(order.remark,0,1)}" th:title="${order.remark}"></td>-->
                 <td th:text="${order.remark}"></td>
             </tr>
             </tbody>

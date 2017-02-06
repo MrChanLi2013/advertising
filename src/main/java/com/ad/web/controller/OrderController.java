@@ -34,6 +34,7 @@ public class OrderController {
             Order order = new Order(param);
             orderDao.save(order);
         } catch (Exception e) {
+            logger.error("订购异常:",e);
             logger.error(e.getMessage());
             return "0";
         }
