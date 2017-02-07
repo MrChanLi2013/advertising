@@ -72,7 +72,7 @@ public class ProductController {
 
     @RequestMapping(value = "/admin/product/add", method = RequestMethod.GET)
     public String add(Model model) {
-        model.addAttribute("category", productDao.findByParentId(1));
+        model.addAttribute("category", productDao.findByLevel(2));
         return "admin/new";
     }
 

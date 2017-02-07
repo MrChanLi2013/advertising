@@ -6,6 +6,7 @@ public class ProductFileParam {
     private String name;
     private MultipartFile pdfFile;
     private String videoLink;
+    private String videoDesc;
 
     public String getName() {
         return name;
@@ -29,5 +30,13 @@ public class ProductFileParam {
 
     public void setVideoLink(String videoLink) {
         this.videoLink = videoLink;
+    }
+
+    public String getVideoDesc() {
+        return videoDesc;
+    }
+
+    public void setVideoDesc(String videoDesc) {
+        this.videoDesc = videoDesc;
     }
 }

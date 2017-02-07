@@ -13,8 +13,12 @@ public class ProductFile {
     private Integer id;
     @Column
     private String name;
+    @Column(name = "pdf_name")
+    private String pdfName;
     @Column(name = "pdf_url")
     private String pdfURL;
+    @Column(name = "video_desc")
+    private String videoDesc;
     @Column(name = "video_link")
     private String videoLink;
     @Column
@@ -88,5 +92,21 @@ public class ProductFile {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getPdfName() {
+        return pdfName;
+    }
+
+    public void setPdfName(String pdfName) {
+        this.pdfName = pdfName;
+    }
+
+    public String getVideoDesc() {
+        return videoDesc;
+    }
+
+    public void setVideoDesc(String videoDesc) {
+        this.videoDesc = videoDesc;
     }
 }

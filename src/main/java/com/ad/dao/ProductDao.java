@@ -9,4 +9,6 @@ public interface ProductDao extends CrudRepository<Product, Integer> {
     List<Product> findByParentId(Integer id);
 
     Product findOneById(Integer id);
+
+    List<Product> findByLevel(Integer level);
 }
