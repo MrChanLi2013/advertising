@@ -30,25 +30,25 @@ $(function () {
                     required: true,
                     email: true
                 },
-                province: {
-                    required: true
-                },
-                city: {
-                    required: true
-                },
+                // province: {
+                //     required: true
+                // },
+                // city: {
+                //     required: true
+                // },
                 area: {
                     required: true
                 }
             },
             messages: {
-                province: {
-                    required: "请选择省份"
-                },
-                city: {
-                    required: "请选择市区"
-                },
+                // province: {
+                //     required: "请选择省份"
+                // },
+                // city: {
+                //     required: "请选择市区"
+                // },
                 area: {
-                    required: '请选择区县'
+                    required: '请选择所属地区'
                 }
             }
         };
