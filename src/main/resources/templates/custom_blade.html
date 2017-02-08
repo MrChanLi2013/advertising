@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="headerLayout">
+<head>
+    <title>客户定制</title>
+    <link type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css.bak}" rel="stylesheet"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>下面使我们微咔客户定制的刀片。<i style="font-size: 12px">微咔-致力于打造专业，务实，品质，科技，分享的领先企业。</i></h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="divider">
+            <hr/>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 custom-blade" th:each="blade: ${blades}">
+                <img th:src="${blade.img}" class="img-responsive" />
+                <p><strong class="case-company-name"><a href="#" th:text="${blade.name}"></a></strong></p>
+                <p th:text="${blade.description}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
