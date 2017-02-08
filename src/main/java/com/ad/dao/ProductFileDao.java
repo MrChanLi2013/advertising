@@ -5,7 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface ProductFileDao extends CrudRepository<ProductFile, Integer> {
     ProductFile findOneById(Integer id);
     Page<ProductFile> findAll(Pageable pageable);
+    List<ProductFile> findAll();
 }

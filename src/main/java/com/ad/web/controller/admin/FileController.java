@@ -52,7 +52,9 @@ public class FileController {
             ProductFile productFile = new ProductFile();
             productFile.setName(param.getName());
             productFile.setVideoLink(param.getVideoLink());
+            productFile.setVideoDesc(param.getVideoDesc());
             String fileName = param.getPdfFile().getOriginalFilename();
+            productFile.setPdfName(fileName);
             productFile.setPdfURL("/products/" + fileName);
             productFile.setPostfix(fileName.substring(fileName.lastIndexOf(".")+1).toUpperCase());
             productFile.setSize(getSize(param.getPdfFile().getSize()));
