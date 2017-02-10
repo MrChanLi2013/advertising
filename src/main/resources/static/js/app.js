@@ -80,6 +80,7 @@ $(function () {
             $(this).addClass('on');
             $.post('/ad/product-list/detail', {id: id}, function (data) {
                 $('#js-product-detail').append($(data)[5].innerHTML);
+                $('.img-zoom').zoom();
             }, 'html');
             return;
         }
