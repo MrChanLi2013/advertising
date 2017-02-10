@@ -58,7 +58,7 @@ public class FileController {
             productFile.setPdfURL("/products/" + fileName);
             productFile.setPostfix(fileName.substring(fileName.lastIndexOf(".")+1).toUpperCase());
             productFile.setSize(getSize(param.getPdfFile().getSize()));
-            uploadService.upload(param.getPdfFile());
+            uploadService.uploadFile(param.getPdfFile());
             productFileDao.save(productFile);
             redirectAttributes.addFlashAttribute("message", "上传产品成功");
         } catch (Exception e) {
