@@ -55,7 +55,7 @@ public class FileController {
             productFile.setVideoDesc(param.getVideoDesc());
             String fileName = param.getPdfFile().getOriginalFilename();
             productFile.setPdfName(fileName);
-            productFile.setPdfURL("/products/file/" + fileName);
+            productFile.setPdfURL("/products/files/" + fileName);
             productFile.setPostfix(fileName.substring(fileName.lastIndexOf(".")+1).toUpperCase());
             productFile.setSize(getSize(param.getPdfFile().getSize()));
             uploadService.uploadFile(param.getPdfFile());
