@@ -49,6 +49,23 @@ function goTo(url, target) {
             }
         };
         $("#js-new-product").validate($.extend(myRules, custom));
+        var fileUploadRules = {
+            rules: {
+                name: {
+                    required: true
+                },
+                videoDesc: {
+                    required: true
+                },
+                videoLink: {
+                    required: true
+                },
+                pdfFile: {
+                    required: true
+                }
+            }
+        };
+        $("#js-file-upload").validate($.extend(fileUploadRules, custom));
     }, 'html');
 }
 
