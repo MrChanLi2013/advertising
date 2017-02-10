@@ -117,3 +117,9 @@ $(function () {
         $(this).hide();
     })
 });
+
+function forwardTo(id) {
+    $('html, body').animate({
+        scrollTop: $("#" + id).offset().top - 150
+    }, 1000);
+}
