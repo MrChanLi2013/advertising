@@ -46,7 +46,7 @@ public class OrderController {
             required = false,
             defaultValue = "1") Integer page) {
         Page<Order> productDetail = orderDao.findAll(new PageRequest(page - 1, pageSize));
-        model.addAttribute("page", new PaginationHelper<Order>(productDetail, "/admin/product/list"));
+        model.addAttribute("page", new PaginationHelper<Order>(productDetail, "/admin/order"));
         return "admin/order";
     }
 }
