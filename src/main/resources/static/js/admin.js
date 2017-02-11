@@ -93,11 +93,23 @@ function updateProduct(target) {
     event.preventDefault();
 }
 
-function displayDiv(target){
+function displayDiv(target) {
     var choiceLevel = $(target).val();
-    if(choiceLevel ==  2){
+    if (choiceLevel == 2) {
         $("#product_one_level").show();
-    }else {
+    } else {
         $("#product_one_level").hide();
     }
+}
+
+function addFileInput() {
+    var componet = '<div class="form-group extend">' +
+        '<label class="col-sm-3 control-label"></label>' +
+        '<div class="col-sm-9 need-validate"><span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>选择文件</span><input type="file" name="detail" multiple="multiple" onchange="upoad(this)"/></span><button type="button" class="btn btn-warning" onclick="cancel(this)" style="margin-left: 5px">取消</button><span class="js-filename"></span></div>' +
+        '</div>';
+    $('#js-file-input-div').append(componet);
+}
+
+function cancel(target) {
+    $(target).parent().parent().remove();
 }
