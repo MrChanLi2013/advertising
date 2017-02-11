@@ -174,5 +174,15 @@
         </div>
     </div>
 </div>
+<th:block layout:fragment="script">
+    <script>
+        $(function () {
+            var id = window.location.href.split("#")[1];
+            $('html, body').animate({
+                scrollTop: $("#" + id).offset().top - 150
+            }, 1000);
+        })
+    </script>
+</th:block>
 </body>
 </html>

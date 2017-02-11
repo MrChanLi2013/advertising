@@ -29,10 +29,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于我们<mark class="bar"></mark></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#" th:href="@{/ad/wir}">公司简介</a></li>
-                        <li><a href="#" onclick="forwardTo('js-idea')">公司理念</a></li>
-                        <li><a href="#" onclick="forwardTo('js-venture')">合作企业</a></li>
-                        <li><a href="#" onclick="forwardTo('js-contact-us')">联系我们</a></li>
-                        <li><a href="#" onclick="forwardTo('js-company')">合作伙伴</a></li>
+                        <li><a href="javascript:void(0)" onclick="forwardTo('js-idea')">公司理念</a></li>
+                        <li><a href="javascript:void(0)" onclick="forwardTo('js-venture')">合作企业</a></li>
+                        <li><a href="javascript:void(0)" onclick="forwardTo('js-contact-us')">联系我们</a></li>
+                        <li><a href="javascript:void(0)" onclick="forwardTo('js-company')">合作伙伴</a></li>
                     </ul>
                 </li>
                 <li class="dropdown" id="js-product-list">
@@ -85,5 +85,6 @@
 <script src="../static/js/distpicker.js" th:src="@{/js/distpicker.js}"></script>
 <script src="../static/js/jquery.validate.min.js" th:src="@{/js/jquery.validate.min.js}"></script>
 <script src="../static/js/validate-base.js" th:src="@{/js/validate-base.js}"></script>
+<th:block layout:fragment="script"></th:block>
 </body>
 </html>

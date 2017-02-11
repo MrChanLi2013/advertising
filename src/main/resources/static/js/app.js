@@ -2,10 +2,10 @@ $(function () {
     //首页一级产品列表
     $.post('/ad/indexLevel', function (data) {
         var list = eval(data);
-        var htmlVar ="";
-        for(var i=0;i<list.length;i++){
-            htmlVar +="<li><a href='/ad/product-list/"+ list[i].id;
-            htmlVar += "'>"+list[i].name;
+        var htmlVar = "";
+        for (var i = 0; i < list.length; i++) {
+            htmlVar += "<li><a href='/ad/product-list/" + list[i].id;
+            htmlVar += "'>" + list[i].name;
             htmlVar += "</a></li>";
         }
         $("#one_level").html(htmlVar);
@@ -132,7 +132,13 @@ $(function () {
 });
 
 function forwardTo(id) {
-    $('html, body').animate({
-        scrollTop: $("#" + id).offset().top - 150
-    }, 1000);
+    var url = window.location.href;
+    if (url.indexOf('wir') > -1) {
+        $('html, body').animate({
+            scrollTop: $("#" + id).offset().top - 150
+        }, 1000);
+    }else {
+        window.location.href = '/ad/wir#' + id;
+    }
+
 }
