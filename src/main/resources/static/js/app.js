@@ -1,4 +1,16 @@
 $(function () {
+    //首页一级产品列表
+    $.post('/ad/indexLevel', function (data) {
+        var list = eval(data);
+        var htmlVar ="";
+        for(var i=0;i<list.length;i++){
+            htmlVar +="<li><a href='/ad/product-list/"+ list[i].id;
+            htmlVar += "'>"+list[i].name;
+            htmlVar += "</a></li>";
+        }
+        $("#one_level").html(htmlVar);
+    }, 'html');
+
     $('.dropdown').hover(function () {
         if (!$(this).hasClass('open')) {
             $('.dropdown-toggle', this).trigger('click');

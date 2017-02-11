@@ -8,6 +8,8 @@ public class ProductFileParam {
     private String videoLink;
     private String videoDesc;
 
+    private MultipartFile[] imaFiles;
+
     public String getName() {
         return name;
     }
@@ -38,5 +40,13 @@ public class ProductFileParam {
 
     public void setVideoDesc(String videoDesc) {
         this.videoDesc = videoDesc;
+    }
+
+    public MultipartFile[] getImaFiles() {
+        return imaFiles;
+    }
+
+    public void setImaFiles(MultipartFile[] imaFiles) {
+        this.imaFiles = imaFiles;
     }
 }

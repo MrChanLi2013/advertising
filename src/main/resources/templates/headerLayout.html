@@ -37,11 +37,10 @@
                 </li>
                 <li class="dropdown" id="js-product-list">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">我们的产品<mark class="bar"></mark></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" th:href="@{/ad/product-list/1}">顶级单面保安刀片</a></li>
-                        <li><a href="#" th:href="@{/ad/product-list/2}">医用实验室刀片</a></li>
-                        <li><a href="#" th:href="@{/ad/product-list/3}">分切刀片</a></li>
-                        <li><a href="#" th:href="@{/ad/product-list/4}">工具及刀片</a></li>
+                    <ul class="dropdown-menu" role="menu" id="one_level">
+                            <!--<li th:each="p : ${ps}">
+                            <a href="#" th:href="@{/ad/product-list/{id}(id=${p.id})}" th:text="${p.name}"></a>
+                        </li>-->
                     </ul>
                 </li>
                 <li class="dropdown" id="js-case">

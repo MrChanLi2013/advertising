@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -49,6 +50,7 @@ public class FileController {
     @RequestMapping(value = "/admin/file/upload", method = RequestMethod.POST)
     public String uploadFile(ProductFileParam param, RedirectAttributes redirectAttributes) {
         try {
+            MultipartFile[] imaFiles = param.getImaFiles();
             ProductFile productFile = new ProductFile();
             productFile.setName(param.getName());
             productFile.setVideoLink(param.getVideoLink());

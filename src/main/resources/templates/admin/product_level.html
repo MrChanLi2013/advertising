@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-12 pd-left-0 pd-right-0">
         <ol class="breadcrumb">
-            <li><a href="#">文件管理</a></li>
-            <li class="active">资料列表</li>
+            <li><a href="#">产品管理</a></li>
+            <li class="active">产品分类列表</li>
         </ol>
     </div>
 </div>
@@ -11,18 +11,17 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>产品名称</th>
-                <th>文件名称</th>
-                <th>视频链接</th>
+                <th>分类名称</th>
+                <th>分类级别</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="detail ,iterStat: ${page.page}">
+            <tr th:each="detail : ${page.page}">
                 <td th:text="${detail.name}"></td>
-                <td th:text="${#strings.replace(detail.pdfURL,'/products/files/','')}"></td>
-                <td th:text="${detail.videoLink}"></td>
-                <td><a href="" th:href="@{/admin/file/delete(id=${detail.id})}">删除</a></td>
+                <td th:text="${detail.level}"></td>
+                <td><a href="#" th:href="@{/admin/product/update/{id}(id=${detail.id})}" onclick="updateProduct(this)">修改</a> |
+                    <a href="" th:href="@{/admin/product/delete(id=${detail.id})}">删除</a></td>
             </tr>
             </tbody>
         </table>

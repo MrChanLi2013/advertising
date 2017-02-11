@@ -11,6 +11,15 @@ public class PageProductParam {
     private MultipartFile detail;
     private String material;
     private String size;
+    private Integer level;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
     public String getName() {
         return name;

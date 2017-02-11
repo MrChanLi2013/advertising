@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.persistence.criteria.*;
 import java.util.List;
 
 @Controller
@@ -114,7 +117,7 @@ public class ProductController {
         try {
             Product product = new Product();
             ProductDetail detail = new ProductDetail();
-            product.setLevel(2);
+            product.setLevel(3);
             product.setName(param.getName());
             product.setParentId(param.getParentId());
             product.setImgUrl("/products/" + param.getImg().getOriginalFilename());
@@ -154,6 +157,66 @@ public class ProductController {
         Product product = productDao.findOneById(id);
         if(product != null){
             productDao.delete(product);
+        }
+        return "redirect:/admin/index";
+    }
+
+    /**
+     * 产品分类列表
+     * @param model
+     * @param page
+     * @return
+     */
+    @RequestMapping(value = "/admin/product/level/list", method = RequestMethod.GET)
+    public String levelList(Model model, @RequestParam(value = "page",
+            required = false,
+            defaultValue = "1") Integer page) {
+        Sort sort = new Sort(Sort.Direction.ASC, "level");
+        Page<Product> products = productDao.findAll(new Specification<Product>() {
+            @Override
+            public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                Path<String> level = root.get("level");
+                /**
+                 * 连接查询条件, 不定参数，可以连接0..N个查询条件
+                 */
+                criteriaQuery.where(cb.lt(level.as(Integer.class), 3)); //这里可以设置任意条查询条件
+                return null;
+            }
+        },new PageRequest(page - 1, pageSize,sort));
+
+        model.addAttribute("page", new PaginationHelper<Product>(products, "/admin/product/level/list"));
+        return "admin/product_level";
+    }
+
+    /**
+     * 增加产品分类
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/admin/product/level/add", method = RequestMethod.GET)
+    public String addLevel(Model model) {
+        model.addAttribute("category", productDao.findByLevel(1));
+        return "admin/new_level";
+    }
+
+    @RequestMapping(value = "/admin/product/level/add", method = RequestMethod.POST)
+    public String addProductLevel(PageProductParam param, RedirectAttributes redirectAttributes) {
+
+        try {
+            Product product = new Product();
+            Integer level = param.getLevel();
+            product.setLevel(level);
+            product.setName(param.getName());
+            if(level == 2){
+                product.setParentId(param.getParentId());
+            }else {
+                product.setParentId(0);
+            }
+            productDao.save(product);
+            redirectAttributes.addFlashAttribute("message", "新增分类成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            redirectAttributes.addFlashAttribute("message", String.format("新增分类失败[%s]", e.getMessage()));
         }
         return "redirect:/admin/index";
     }
