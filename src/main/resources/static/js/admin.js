@@ -92,3 +92,12 @@ function updateProduct(target) {
     }, 'html');
     event.preventDefault();
 }
+
+function displayDiv(target){
+    var choiceLevel = $(target).val();
+    if(choiceLevel ==  2){
+        $("#product_one_level").show();
+    }else {
+        $("#product_one_level").hide();
+    }
+}
