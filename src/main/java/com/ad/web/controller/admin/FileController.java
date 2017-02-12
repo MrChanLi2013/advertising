@@ -50,7 +50,6 @@ public class FileController {
     @RequestMapping(value = "/admin/file/upload", method = RequestMethod.POST)
     public String uploadFile(ProductFileParam param, RedirectAttributes redirectAttributes) {
         try {
-            MultipartFile[] imaFiles = param.getImaFiles();
             ProductFile productFile = new ProductFile();
             productFile.setName(param.getName());
             productFile.setVideoLink(param.getVideoLink());

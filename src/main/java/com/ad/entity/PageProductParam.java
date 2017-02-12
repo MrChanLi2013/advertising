@@ -13,6 +13,8 @@ public class PageProductParam {
     private String size;
     private Integer level;
 
+    private MultipartFile[] detailFiles;
+
     public Integer getLevel() {
         return level;
     }
@@ -83,5 +85,13 @@ public class PageProductParam {
 
     public void setDetail(MultipartFile detail) {
         this.detail = detail;
+    }
+
+    public MultipartFile[] getDetailFiles() {
+        return detailFiles;
+    }
+
+    public void setDetailFiles(MultipartFile[] detailFiles) {
+        this.detailFiles = detailFiles;
     }
 }
