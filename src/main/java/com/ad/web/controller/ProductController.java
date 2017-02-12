@@ -249,12 +249,11 @@ public class ProductController {
             Product product = productDao.findOneById(id);
             if(product != null){
                 Integer level = param.getLevel();
-                product.setLevel(level);
-                product.setName(param.getName());
-                if(level == 2){
-                    product.setParentId(param.getParentId());
-                }else {
-                    product.setParentId(0);
+                if(level != null){
+                    product.setLevel(level);
+                }
+                if(param.getName() != null){
+                    product.setName(param.getName());
                 }
                 productDao.save(product);
             }
@@ -270,16 +269,16 @@ public class ProductController {
     public String deleteProductLevel(@RequestParam("id") Integer id,
                                 PageProductParam param, RedirectAttributes redirectAttributes) {
         List<Product> list = productDao.findByParentId(id);
-        if(list == null){
+        if(list == null || list.isEmpty()){
             Product product = productDao.findOneById(id);
             if(product != null){
                 productDao.delete(product);
                 redirectAttributes.addFlashAttribute("message", "删除成功");
             }
         }else {
-            redirectAttributes.addFlashAttribute("message", "此分类下子类,请先删除子类");
+            redirectAttributes.addFlashAttribute("message", "删除失败!此分类下子类,请先删除子类");
         }
-        return "admin/index";
+        return "redirect:/admin/index";
     }
 
 }

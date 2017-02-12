@@ -113,3 +113,7 @@ function addFileInput() {
 function cancel(target) {
     $(target).parent().parent().remove();
 }
+
+function back() {
+    window.location.href = "javascript:history.go(-1)";
+}
