@@ -33,11 +33,12 @@
     </div>
     <div class="container">
         <h3>产品细节</h3>
-        <div class="row">
+        <div class="row" th:each="fileUrl : ${#strings.listSplit(detail.detailImg,',')}">
             <div class="col-md-12 text-center">
-                <img class="img-responsive center-block" th:src="${detail.detailImg}" src="../static/images/20170110155457_9766.jpg" alt="" />
+                <img class="img-responsive center-block" th:src="${fileUrl}" src="../static/images/20170110155457_9766.jpg" alt="" />
             </div>
         </div>
+
     </div>
     <div class="container">
         <div class="divider">

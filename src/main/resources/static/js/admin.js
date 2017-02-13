@@ -105,11 +105,15 @@ function displayDiv(target) {
 function addFileInput() {
     var componet = '<div class="form-group extend">' +
         '<label class="col-sm-3 control-label"></label>' +
-        '<div class="col-sm-9 need-validate"><span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>选择文件</span><input type="file" name="detail" multiple="multiple" onchange="upoad(this)"/></span><button type="button" class="btn btn-warning" onclick="cancel(this)" style="margin-left: 5px">取消</button><span class="js-filename"></span></div>' +
+        '<div class="col-sm-9 need-validate"><span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>选择文件</span><input type="file" name="detailFiles" multiple="multiple" onchange="upoad(this)"/></span><button type="button" class="btn btn-warning" onclick="cancel(this)" style="margin-left: 5px">取消</button><span class="js-filename"></span></div>' +
         '</div>';
     $('#js-file-input-div').append(componet);
 }
 
 function cancel(target) {
     $(target).parent().parent().remove();
+}
+
+function back() {
+    window.location.href = "javascript:history.go(-1)";
 }

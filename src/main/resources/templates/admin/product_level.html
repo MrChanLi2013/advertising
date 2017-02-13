@@ -20,8 +20,8 @@
             <tr th:each="detail : ${page.page}">
                 <td th:text="${detail.name}"></td>
                 <td th:text="${detail.level}"></td>
-                <td><a href="#" th:href="@{/admin/product/update/{id}(id=${detail.id})}" onclick="updateProduct(this)">修改</a> |
-                    <a href="" th:href="@{/admin/product/delete(id=${detail.id})}">删除</a></td>
+                <td><a href="#" th:href="@{/admin/product/level/update/{id}(id=${detail.id})}" onclick="updateProduct(this)">修改</a> |
+                    <a href="" th:href="@{/admin/product/level/delete(id=${detail.id})}">删除</a></td>
             </tr>
             </tbody>
         </table>

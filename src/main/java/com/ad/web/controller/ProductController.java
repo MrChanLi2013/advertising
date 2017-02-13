@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.persistence.criteria.*;
@@ -126,8 +127,20 @@ public class ProductController {
             detail.setModel(param.getModel());
             detail.setRemark(param.getRemark());
             detail.setSize(param.getSize());
-            detail.setDetailImg("/products/" + param.getDetail().getOriginalFilename());
-            uploadService.upload(param.getDetail());
+//            detail.setDetailImg("/products/" + param.getDetail().getOriginalFilename());
+//            uploadService.upload(param.getDetail());
+            MultipartFile[] detailFiles = param.getDetailFiles();
+            String fileUrl ="";
+            for(int i=0;i<detailFiles.length;i++){
+                MultipartFile detailFile = detailFiles[i];
+                if(i == (detailFiles.length-1)){
+                    fileUrl += "/products/" + detailFile.getOriginalFilename();
+                }else {
+                    fileUrl += "/products/" + detailFile.getOriginalFilename() + ",";
+                }
+                uploadService.upload(detailFile);
+            }
+            detail.setDetailImg(fileUrl);
             detail.setProduct(product);
             product.setDetail(detail);
             productDao.save(product);
@@ -220,4 +233,52 @@ public class ProductController {
         }
         return "redirect:/admin/index";
     }
+
+    @RequestMapping(value = "/admin/product/level/update/{id}", method = RequestMethod.GET)
+    public String updateLevel(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("productLevel", productDao.findOneById(id));
+        model.addAttribute("category", productDao.findByLevel(1));
+        return "admin/update_level";
+    }
+
+    @RequestMapping(value = "/admin/product/level/update/{id}", method = RequestMethod.POST)
+    public String updateProductLevel(@PathVariable("id") Integer id,
+                                     PageProductParam param, RedirectAttributes redirectAttributes) {
+
+        try {
+            Product product = productDao.findOneById(id);
+            if(product != null){
+                Integer level = param.getLevel();
+                if(level != null){
+                    product.setLevel(level);
+                }
+                if(param.getName() != null){
+                    product.setName(param.getName());
+                }
+                productDao.save(product);
+            }
+            redirectAttributes.addFlashAttribute("message", "修改分类成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            redirectAttributes.addFlashAttribute("message", String.format("修改分类失败[%s]", e.getMessage()));
+        }
+        return "redirect:/admin/index";
+    }
+
+    @RequestMapping(value = "/admin/product/level/delete", method = RequestMethod.GET)
+    public String deleteProductLevel(@RequestParam("id") Integer id,
+                                PageProductParam param, RedirectAttributes redirectAttributes) {
+        List<Product> list = productDao.findByParentId(id);
+        if(list == null || list.isEmpty()){
+            Product product = productDao.findOneById(id);
+            if(product != null){
+                productDao.delete(product);
+                redirectAttributes.addFlashAttribute("message", "删除成功");
+            }
+        }else {
+            redirectAttributes.addFlashAttribute("message", "删除失败!此分类下子类,请先删除子类");
+        }
+        return "redirect:/admin/index";
+    }
+
 }
