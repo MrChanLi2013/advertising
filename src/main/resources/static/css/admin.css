@@ -28,17 +28,17 @@
     width: 20px;
 }
 
-div.panel-heading:hover {
+section div.panel-heading:hover {
     background-color: #1e282c;
     cursor: pointer;
     border-left: 3px solid #3c8dbc;
 }
 
-.menu .panel-heading {
+section .menu .panel-heading {
     border-left: 3px solid transparent;
 }
 
-.menu .header-active {
+section .menu .header-active {
     border-left: 3px solid #3c8dbc;
 }
 
@@ -70,9 +70,12 @@ div.panel-heading:hover {
 #js-right-content {
     overflow-y: scroll;
     overflow-x: hidden;
-    padding-left: 10px;
 }
 
 .white {
     color: #fff !important;
+}
+
+#accordion .list-group .list-group-item {
+    padding-left: 25px;
 }

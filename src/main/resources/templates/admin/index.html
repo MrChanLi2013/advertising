@@ -6,6 +6,7 @@
     <link type="text/css" href="../../static/css/bootstrap-admin.min.css"
           th:href="@{/css/bootstrap-admin.min.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" href="../../static/css/summernote.css" th:href="@{/css/summernote.css}"/>
     <link type="text/css" href="../../static/css/admin.css" th:href="@{/css/admin.css}" rel="stylesheet"/>
     <link type="text/css" href="../../static/css/validate.css" th:href="@{/css/validate.css}" rel="stylesheet"/>
 </head>
@@ -60,7 +61,7 @@
                                                                        onclick="goTo('/admin/product/add', this)"><i
                                                 class="fa fa-circle-o"></i>新增产品</a>
                                         </li>
-                                        <li class="list-group-item"><a href="javascript:void(0)" id="init"
+                                        <li class="list-group-item"><a href="javascript:void(0)"
                                                                        class="menu-a"
                                                                        onclick="goTo('/admin/product/level/list', this)"><i
                                                 class="fa fa-circle-o"></i>产品分类列表</a>
@@ -81,7 +82,8 @@
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                            href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="fa fa-file"></i>文件管理
+                                            <i class="fa fa-file"></i>
+                                            <span>文件管理</span>
                                             <span class="pull-right"><i class="fa fa-angle-right"></i></span>
                                         </a>
                                     </h4>
@@ -94,6 +96,29 @@
                                         </li>
                                         <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/file/zlist', this)">
                                             <i class="fa fa-circle-o"></i>文件列表</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="fa fa-newspaper-o"></i>
+                                            <span>新闻管理</span>
+                                            <span class="pull-right"><i class="fa fa-angle-right"></i></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse js-collapse" role="tabpanel"
+                                     aria-labelledby="headingTwo">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/news', this)"><i
+                                                class="fa fa-circle-o"></i>新闻列表</a>
+                                        </li>
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/file/zlist', this)">
+                                            <i class="fa fa-circle-o"></i>新增新闻</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -123,6 +148,8 @@
 <script src="../../static/js/jquery-1.11.2.min.js" th:src="@{/js/jquery-1.11.2.min.js}"></script>
 <script src="../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../../static/js/jquery.validate.min.js" th:src="@{/js/jquery.validate.min.js}"></script>
+<script src="../../static/js/summernote.min.js" th:src="@{/js/summernote.min.js}"></script>
+<script src="../../static/js/summernote-zh-CN.js" th:src="@{/js/summernote-zh-CN.js}"></script>
 <script src="../../static/js/validate-base.js" th:src="@{/js/validate-base.js}"></script>
 <script src="../../static/js/admin.js" th:src="@{/js/admin.js}"></script>
 </body>

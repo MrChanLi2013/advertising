@@ -19,24 +19,28 @@ public class UploadService {
     private String path;
     @Value("${products.file.path}")
     private String filePath;
+    @Value("${products.news.path}")
+    private String newsFilePath;
 
     public void upload(MultipartFile uploadfile) {
+        uploadTheFile(path, uploadfile);
+    }
+
+    public void uploadFile(MultipartFile uploadfile) {
+        uploadTheFile(filePath, uploadfile);
+    }
+
+    public void uploadNewsFile(MultipartFile uploadfile) {
+        uploadTheFile(newsFilePath, uploadfile);
+    }
+
+    private void uploadTheFile(String path, MultipartFile uploadfile) {
         String filename = uploadfile.getOriginalFilename();
         File file = new File(path + filename);
         try {
             Files.write(uploadfile.getBytes(), file);
         } catch (IOException e) {
-            logger.error("上传文件失败:", e);
-            throw new RuntimeException("上传文件失败");
-        }
-    }
-
-    public void uploadFile(MultipartFile uploadfile) {
-        String filename = uploadfile.getOriginalFilename();
-        File file = new File(filePath + filename);
-        try {
-            Files.write(uploadfile.getBytes(), file);
-        } catch (IOException e) {
+            e.printStackTrace();
             logger.error("上传文件失败:", e);
             throw new RuntimeException("上传文件失败");
         }

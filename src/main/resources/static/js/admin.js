@@ -66,6 +66,26 @@ function goTo(url, target) {
             }
         };
         $("#js-file-upload").validate($.extend(fileUploadRules, custom));
+        $('#summernote').summernote({
+            lang: 'zh-CN',
+            callbacks: {
+                onImageUpload: function (files) {
+                    sendFile(files[0], $(this));
+                }
+            },
+            height: 300,
+            minHeight: null,
+            maxHeight: null,
+            focus: true
+        });
+        var newsRules = {
+            rules: {
+                title: {
+                    required: true
+                },
+            }
+        };
+        $("#js-add-news").validate($.extend(newsRules, custom));
     }, 'html');
 }
 
@@ -116,4 +136,31 @@ function cancel(target) {
 
 function back() {
     window.location.href = "javascript:history.go(-1)";
+}
+
+function createNews() {
+    var markupStr = $('#summernote').summernote('code');
+    var title = $('#js-news-title').val();
+    if ($("#js-add-news").valid()) {
+        $.post('/admin/news', {title: title, content: markupStr}, function (data) {
+            $('#js-right-content').html(data);
+        });
+    }
+}
+
+function sendFile(file, editor) {
+    var data = new FormData();
+    data.append("file", file);
+    $.ajax({
+        data: data,
+        type: "POST",
+        url: "/admin/upload-news-picture",
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function (url) {
+            console.info(url)
+            editor.summernote('insertImage', url);
+        }
+    });
 }

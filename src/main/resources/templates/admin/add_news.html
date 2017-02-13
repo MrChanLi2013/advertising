@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-12 pd-left-0 pd-right-0">
+        <ol class="breadcrumb">
+            <li><a href="#">新闻管理</a></li>
+            <li class="active">新增新闻</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal" id="js-add-news" role="form"
+              method="post">
+            <div class="form-group">
+                <label class="col-sm-1 control-label">标题：</label>
+                <div class="col-sm-6 need-validate">
+                    <input type="text" name="title" id="js-news-title" class="form-control" value=""/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">内容：</label>
+                <div class="col-sm-11">
+                    <div id="summernote">新闻内容</div>
+                </div>
+            </div>
+            <div class="modal-footer col-sm-offset-1"
+                 style="text-align: left;padding-left: 0">
+                <button type="button" class="btn btn-default" onclick="createNews()">确定</button>
+            </div>
+        </form>
+    </div>
+</div>

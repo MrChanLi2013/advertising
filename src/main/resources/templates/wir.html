@@ -178,9 +178,11 @@
     <script>
         $(function () {
             var id = window.location.href.split("#")[1];
-            $('html, body').animate({
-                scrollTop: $("#" + id).offset().top - 150
-            }, 1000);
+            if (id != undefined) {
+                $('html, body').animate({
+                    scrollTop: $("#" + id).offset().top - 150
+                }, 1000);
+            }
         })
     </script>
 </th:block>
