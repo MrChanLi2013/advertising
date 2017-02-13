@@ -2,7 +2,9 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-9"/>
-    <title>后台管理</title>
+    <title>深圳市威咔刀具有限公司</title>
+    <link rel="icon" href="../../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon" />
     <link type="text/css" href="../../static/css/bootstrap-admin.min.css"
           th:href="@{/css/bootstrap-admin.min.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}"/>
@@ -115,10 +117,10 @@
                                      aria-labelledby="headingTwo">
                                     <ul class="list-group">
                                         <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/news', this)"><i
-                                                class="fa fa-circle-o"></i>新闻列表</a>
+                                                class="fa fa-circle-o"></i>新增新闻</a>
                                         </li>
-                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/file/zlist', this)">
-                                            <i class="fa fa-circle-o"></i>新增新闻</a>
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/news/list', this)">
+                                            <i class="fa fa-circle-o"></i>新闻列表</a>
                                         </li>
                                     </ul>
                                 </div>
