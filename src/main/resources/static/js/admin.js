@@ -143,9 +143,22 @@ function createNews() {
     var title = $('#js-news-title').val();
     if ($("#js-add-news").valid()) {
         $.post('/admin/news', {title: title, content: markupStr}, function (data) {
-            $('#js-right-content').html(data);
-        });
+            if (data == 'success') {
+                alert('添加成功');
+            } else {
+                alert('操作失败');
+            }
+        }, 'text');
     }
+}
+
+function deleteNews(target) {
+    $.post($(target).attr('href'), {}, function () {
+        $.get('/admin/news-list', {}, function (data) {
+            $('#js-right-content').html(data);
+        }, 'html');
+    }, 'text');
+    event.preventDefault();
 }
 
 function sendFile(file, editor) {
@@ -159,7 +172,6 @@ function sendFile(file, editor) {
         processData: false,
         contentType: false,
         success: function (url) {
-            console.info(url)
             editor.summernote('insertImage', url);
         }
     });
