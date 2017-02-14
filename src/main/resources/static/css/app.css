@@ -201,6 +201,10 @@ a.download {
     text-indent: 0;
 }
 
+.news-p p {
+    text-indent: 0;
+}
+
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
         top: 100%;
