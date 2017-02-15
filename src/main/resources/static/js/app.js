@@ -92,7 +92,10 @@ $(function () {
             $(this).addClass('on');
             $.post('/ad/product-list/detail', {id: id}, function (data) {
                 $('#js-product-detail').append($(data)[5].innerHTML);
-                $('.img-zoom').zoom();
+                $('.img-zoom').click(function () {
+                    $('#js-zoom-image').find('.modal-body').find('img').attr('src', $(this).find('img').attr('src'));
+                    $('#js-zoom-image').modal('show');
+                });
             }, 'html');
             return;
         }
@@ -137,7 +140,7 @@ function forwardTo(id) {
         $('html, body').animate({
             scrollTop: $("#" + id).offset().top - 150
         }, 1000);
-    }else {
+    } else {
         window.location.href = '/ad/wir#' + id;
     }
 

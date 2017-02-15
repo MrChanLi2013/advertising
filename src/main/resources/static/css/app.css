@@ -205,6 +205,21 @@ a.download {
     text-indent: 0;
 }
 
+#js-zoom-image .modal-body {
+    padding: 0;
+    width: 600px;
+    height: 500px;
+}
+
+#js-zoom-image img {
+    width: 600px;
+    height: 500px;
+}
+
+.img-zoom img {
+    height: 185px;
+}
+
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
         top: 100%;
