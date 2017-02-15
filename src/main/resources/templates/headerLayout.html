@@ -4,12 +4,20 @@
 <head>
     <title>深圳市威咔刀具有限公司</title>
     <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon" />
     <link rel="shortcut icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon" />
     <link type="text/css" href="../static/css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
     <link type="text/css" href="../static/css/app.css"
           th:href="@{/css/app.css}" rel="stylesheet"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
 <header class="navbar-fixed-top">
@@ -63,7 +71,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">行业动态<mark class="bar"></mark></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#" th:href="@{/ad/news}">行业新闻</a></li>
-                        <!--<li><a href="#">最新信息</a></li>-->
+                        <li><a href="#" th:href="@{/ad/news/company}">公司动态</a></li>
                     </ul>
                 </li>
                 <li id="js-contact"><a href="#" th:href="@{/ad/contact}">联系我们<mark class="bar"></mark></a></li>

@@ -152,9 +152,32 @@ function createNews() {
     }
 }
 
+function createCompanyNews() {
+    var markupStr = $('#summernote').summernote('code');
+    var title = $('#js-news-title').val();
+    if ($("#js-add-news").valid()) {
+        $.post('/admin/company-news', {title: title, content: markupStr}, function (data) {
+            if (data == 'success') {
+                alert('添加成功');
+            } else {
+                alert('操作失败');
+            }
+        }, 'text');
+    }
+}
+
 function deleteNews(target) {
     $.post($(target).attr('href'), {}, function () {
         $.get('/admin/news-list', {}, function (data) {
+            $('#js-right-content').html(data);
+        }, 'html');
+    }, 'text');
+    event.preventDefault();
+}
+
+function deleteCompanyNews(target) {
+    $.post($(target).attr('href'), {}, function () {
+        $.get('/admin/company-news-list', {}, function (data) {
             $('#js-right-content').html(data);
         }, 'html');
     }, 'text');
@@ -175,4 +198,47 @@ function sendFile(file, editor) {
             editor.summernote('insertImage', url);
         }
     });
+}
+
+function updateInfo() {
+    $.get('/admin/user-info', {}, function (data) {
+        $('#js-right-content').html(data);
+        $('#headingOne').find('a').click();
+        var userRules = {
+            rules: {
+                oldPassword: {
+                    required: true,
+                    remote: {
+                        url: "/admin/ajax-valide-password",
+                        type: "post",
+                        data: {
+                            oldPassword: function () {
+                                return $("#oldPassword").val();
+                            },
+                            username: function () {
+                                return $("#username").val();
+                            }
+                        },
+                        dataType: "json"
+                    }
+                },
+                newPassword: {
+                    required: true
+                },
+                repeatPassword: {
+                    required: true,
+                    equalTo: "#newPassword"
+                }
+            },
+            messages: {
+                repeatPassword: {
+                    equalTo: "两次密码不一致"
+                },
+                oldPassword: {
+                    remote: "原密码输入不正确"
+                }
+            }
+        };
+        $("#js-update-user-info").validate($.extend(userRules, custom));
+    }, 'html');
 }
