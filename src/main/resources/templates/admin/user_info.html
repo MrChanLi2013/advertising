@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12 pd-left-0 pd-right-0">
+        <ol class="breadcrumb">
+            <li><a href="#">用户管理</a></li>
+            <li class="active">信息管理</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form class="form-horizontal" id="js-update-user-info" role="form"
+              th:action="@{/admin/user}"
+              method="post">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">用户名：</label>
+                <div class="col-sm-9 need-validate">
+                    <input type="text" readonly="readonly" name="username" th:value="${username}" id="username" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">原密码：</label>
+                <div class="col-sm-9 need-validate">
+                    <input type="password" name="oldPassword" id="oldPassword" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">新密码：</label>
+                <div class="col-sm-9 need-validate">
+                    <input type="password" name="newPassword" id="newPassword" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">重复密码：</label>
+                <div class="col-sm-9 need-validate">
+                    <input type="password" name="repeatPassword" id="repeatPassword" class="form-control"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">确定</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -25,7 +25,7 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:void(0)" th:text="${#httpServletRequest.remoteUser}">管理员</a></li>
+                <li><a href="javascript:void(0)" onclick="updateInfo()" th:text="${#httpServletRequest.remoteUser}">管理员</a></li>
                 <li><a href="#" th:href="@{/admin/logout}">退出</a></li>
             </ul>
         </nav>
@@ -91,10 +91,12 @@
                                 <div id="collapseTwo" class="panel-collapse collapse js-collapse" role="tabpanel"
                                      aria-labelledby="headingTwo">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/file/toUpload', this)"><i
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a"
+                                                                       onclick="goTo('/admin/file/toUpload', this)"><i
                                                 class="fa fa-circle-o"></i>文件上传</a>
                                         </li>
-                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/file/zlist', this)">
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a"
+                                                                       onclick="goTo('/admin/file/zlist', this)">
                                             <i class="fa fa-circle-o"></i>文件列表</a>
                                         </li>
                                     </ul>
@@ -114,11 +116,38 @@
                                 <div id="collapseThree" class="panel-collapse collapse js-collapse" role="tabpanel"
                                      aria-labelledby="headingTwo">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/news-list', this)"><i
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a"
+                                                                       onclick="goTo('/admin/news-list', this)"><i
                                                 class="fa fa-circle-o"></i>新闻列表</a>
                                         </li>
-                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a" onclick="goTo('/admin/news', this)">
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a"
+                                                                       onclick="goTo('/admin/news', this)">
                                             <i class="fa fa-circle-o"></i>新增新闻</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingFour">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="fa fa-rss-square"></i>
+                                            <span>公司动态</span>
+                                            <span class="pull-right"><i class="fa fa-angle-right"></i></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse js-collapse" role="tabpanel"
+                                     aria-labelledby="headingTwo">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a"
+                                                                       onclick="goTo('/admin/company-news', this)"><i
+                                                class="fa fa-circle-o"></i>新增动态</a>
+                                        </li>
+                                        <li class="list-group-item"><a href="javascript:void(0)" class="menu-a"
+                                                                       onclick="goTo('/admin/company-news-list', this)">
+                                            <i class="fa fa-circle-o"></i>动态列表</a>
                                         </li>
                                     </ul>
                                 </div>

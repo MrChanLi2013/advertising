@@ -21,7 +21,7 @@
                 <div class="news-title">
                     <p class="new-list"><strong>新闻列表:</strong></p>
                     <p th:each="list : ${newsList}">
-                        <a href="#" th:href="@{/ad/news(id=${list.id})}"><span th:text="${list.title}"></span><span class="glyphicon glyphicon-globe"></span></a>
+                        <a href="#" th:href="@{/ad/news/company(id=${list.id})}"><span th:text="${list.title}"></span><span class="glyphicon glyphicon-globe"></span></a>
                     </p>
                 </div>
             </div>
