@@ -6,6 +6,10 @@
     margin-bottom: 1px;
 }
 
+.radio-group div {
+    display: inline-block;
+}
+
 .radio-group > .title {
     display: inline-block;
 }
