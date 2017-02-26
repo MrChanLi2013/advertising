@@ -104,7 +104,7 @@ public class ProductController {
         }
         if (!param.getImg().getOriginalFilename().equals("") &&
                 !("/products/" + param.getImg().getOriginalFilename()).equals(productDetail.getProduct().getImgUrl())) {
-            productDetail.getProduct().setImgUrl("/produts/" + param.getImg().getOriginalFilename());
+            productDetail.getProduct().setImgUrl("/products/" + param.getImg().getOriginalFilename());
             uploadService.upload(param.getImg());
         }
         productDetailDao.save(productDetail);
