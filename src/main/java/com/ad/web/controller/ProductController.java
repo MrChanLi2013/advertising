@@ -83,7 +83,7 @@ public class ProductController {
     @RequestMapping(value = "/admin/product/update/{detailId}", method = RequestMethod.GET)
     public String update(@PathVariable("detailId") Integer detailId, Model model) {
         model.addAttribute("detail", productDetailDao.findOne(detailId));
-        model.addAttribute("category", productDao.findByParentId(1));
+        model.addAttribute("category", productDao.findByLevel(2));
         return "admin/update";
     }
 
@@ -104,7 +104,7 @@ public class ProductController {
         }
         if (!param.getImg().getOriginalFilename().equals("") &&
                 !("/products/" + param.getImg().getOriginalFilename()).equals(productDetail.getProduct().getImgUrl())) {
-            productDetail.getProduct().setImgUrl("/produts/" + param.getImg().getOriginalFilename());
+            productDetail.getProduct().setImgUrl("/products/" + param.getImg().getOriginalFilename());
             uploadService.upload(param.getImg());
         }
         productDetailDao.save(productDetail);
