@@ -132,6 +132,10 @@ $(function () {
         img.show();
         $(this).hide();
     })
+
+    $('#js-product-detail').css({
+        'margin-top': $('.product-category').height()
+    });
 });
 
 function forwardTo(id) {

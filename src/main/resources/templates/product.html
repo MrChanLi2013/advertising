@@ -10,35 +10,40 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="container">
-        <div class="row">
-            <div class="group-product" th:each="product : ${products}">
-                <div class="col-xs-12 col-sm-6 col-md-3 text-center">
-                    <div class="radio-group">
-                        <div class="title"><span th:text="${product.name}"></span></div>
-                        <div class="radio-filter">
-                            <div class="radio-wrapper">
-                                <a class="radio-button off" href="#">
-                                    <span class="radio-button-label"></span><span class="glyphicon glyphicon-ok"></span>
-                                </a>
+    <div class="product-category">
+        <div class="container content">
+            <div class="row">
+                <div class="group-product" th:each="product : ${products}">
+                    <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                        <div class="radio-group">
+                            <div class="title"><span th:text="${product.name}"></span></div>
+                            <div class="radio-filter">
+                                <div class="radio-wrapper">
+                                    <a class="radio-button off" href="#">
+                                        <span class="radio-button-label"></span><span
+                                            class="glyphicon glyphicon-ok"></span>
+                                    </a>
+                                </div>
+                                <input type="checkbox" name="product" th:value="${product.id}"
+                                       style="position: absolute; top: -200px; left: -200px;"/>
                             </div>
-                            <input type="checkbox" name="product" th:value="${product.id}"
-                                   style="position: absolute; top: -200px; left: -200px;"/>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
-                <div class="radio-group" id="js-reset">
-                    <div class="title"><span>重置</span></div>
-                    <div class="radio-filter">
-                        <div class="radio-wrapper">
-                            <a class="reset" href="#"></a>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                    <div class="radio-group" id="js-reset">
+                        <div class="title"><span>重置</span></div>
+                        <div class="radio-filter">
+                            <div class="radio-wrapper">
+                                <a class="reset" href="#"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div id="js-product-detail"></div>
         <div class="modal fade" id="js-info" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -59,7 +64,8 @@
                             <div class="form-group">
                                 <label for="input-phone" class="col-sm-3 control-label">手机：</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="phone" id="input-phone" placeholder="手机"/>
+                                    <input type="text" class="form-control" name="phone" id="input-phone"
+                                           placeholder="手机"/>
                                 </div>
                             </div>
                             <div class="form-group">

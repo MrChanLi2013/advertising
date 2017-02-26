@@ -86,3 +86,17 @@
     font-weight: bold;
     margin-top: 10px;
 }
+
+.product-category {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 150px;
+    z-index: 1000;
+    background: #fff;
+}
+
+.product-category .content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
