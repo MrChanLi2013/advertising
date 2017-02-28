@@ -130,6 +130,14 @@ function addFileInput() {
     $('#js-file-input-div').append(componet);
 }
 
+function addDetailFileInput() {
+    var componet = '<div class="form-group extend">' +
+        '<label class="col-sm-3 control-label"></label>' +
+        '<div class="col-sm-9 need-validate"><span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>重新上传</span><input type="file" name="detailFiles" multiple="multiple" onchange="upoad(this)"/></span><button type="button" class="btn btn-warning" onclick="cancel(this)" style="margin-left: 5px">取消</button><span class="js-filename"></span></div>' +
+        '</div>';
+    $('#js-detail-file-input-div').append(componet);
+}
+
 function cancel(target) {
     $(target).parent().parent().remove();
 }

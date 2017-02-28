@@ -97,15 +97,35 @@ public class ProductController {
         productDetail.setRemark(param.getRemark());
         productDetail.setSize(param.getSize());
         productDetail.getProduct().setParentId(param.getParentId());
-        if (!param.getDetail().getOriginalFilename().equals("") &&
-                !("/products/" + param.getDetail().getOriginalFilename()).equals(productDetail.getDetailImg())) {
-            productDetail.setDetailImg("/products/" + param.getDetail().getOriginalFilename());
-            uploadService.upload(param.getDetail());
-        }
         if (!param.getImg().getOriginalFilename().equals("") &&
                 !("/products/" + param.getImg().getOriginalFilename()).equals(productDetail.getProduct().getImgUrl())) {
             productDetail.getProduct().setImgUrl("/products/" + param.getImg().getOriginalFilename());
             uploadService.upload(param.getImg());
+        }
+//        if (!param.getDetail().getOriginalFilename().equals("") &&
+//                !("/products/" + param.getDetail().getOriginalFilename()).equals(productDetail.getDetailImg())) {
+//            productDetail.setDetailImg("/products/" + param.getDetail().getOriginalFilename());
+//            uploadService.upload(param.getDetail());
+//        }
+        //修改支持多个图片
+        MultipartFile[] detailFiles = param.getDetailFiles();
+        if(detailFiles != null && detailFiles.length > 0){
+            String fileUrl ="";
+            for(int i=0;i<detailFiles.length;i++){
+                MultipartFile detailFile = detailFiles[i];
+                String fileName = detailFile.getOriginalFilename();
+                if(fileName != null && !"".equals(fileName)){
+                    if(i == (detailFiles.length-1)){
+                        fileUrl += "/products/" + detailFile.getOriginalFilename();
+                    }else {
+                        fileUrl += "/products/" + detailFile.getOriginalFilename() + ",";
+                    }
+                    uploadService.upload(detailFile);
+                }
+            }
+            if(!"".equals(fileUrl)){
+                productDetail.setDetailImg(fileUrl);
+            }
         }
         productDetailDao.save(productDetail);
         redirectAttributes.addFlashAttribute("message", "修改成功");
