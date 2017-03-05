@@ -18,8 +18,10 @@ public class DownloadContoller {
 
     @RequestMapping(value = "download", method = RequestMethod.GET)
     public String download(Model model) {
-        List<ProductFile> list = productFileDao.findAll();
+        List<ProductFile> list = productFileDao.findByPdfURLIsNotNull();
+        List<ProductFile> lst = productFileDao.findByVideoLinkIsNotNull();
         model.addAttribute("productFiles", list);
+        model.addAttribute("productFileList", lst);
         return "download";
     }
 }

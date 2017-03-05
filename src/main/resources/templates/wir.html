@@ -12,7 +12,7 @@
 <body>
 <div layout:fragment="content" id="about">
     <div class="container">
-        <div class="row">
+        <!--<div class="row">
             <div class="col-xs-offset-5 col-xs-2">
                 <div class="circle">导读</div>
                 <div class="line"></div>
@@ -25,11 +25,11 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="row module">
             <div class="col-xs-5">
                 <div class="col-xs-12">
-                    <img src="../static/images/guide.jpg" alt="" th:src="@{/images/guide.jpg}" class="img-responsive"/>
+                    <img src="../static/images/company.jpg" alt="" th:src="@{/images/company.jpg}" class="img-responsive"/>
                     <p>
                         威咔科技（深圳）有限公司是一家专注提供高品质刀具和技术解决方案的企业，我司是顶尖精准切割百年企业美国科锐森，德国莫扎特在华的营运负责企业。
                         威咔公司顾问团队是由在欧美刀具行业资深技术人士组成，部分技术顾问从业40年以上，可以给客户解决各种刀具难题。
@@ -45,13 +45,15 @@
         </div>
         <div class="row module" id="js-idea">
             <div class="col-xs-offset-5 col-xs-2">
-                <div class="circle">公司理念</div>
+                <div class="circle">价值刀具</div>
                 <div class="line" style="height: 160%"></div>
             </div>
             <div class="col-xs-5">
                 <div class="col-xs-12">
-                    <img src="../static/images/guide.jpg" alt="" th:src="@{/images/guide.jpg}" class="img-responsive"/>
-                    <p style="text-indent: 0">威咔公司致力于打造专业，务实，品质，科技，分享的领先企业，我们期待与您携手，将您脑海里的设想变为现实。
+                    <img src="../static/images/value.jpg" alt="" th:src="@{/images/value.jpg}" class="img-responsive"/>
+                    <p style="text-indent: 0">
+                        我们拥有专业的工程技术人员，与欧美前沿刀具制造商合作，为您打造一流的私人订制刀具。
+                        我们秉承高品质，高性价，高适用特性标准刀具，为您的切割保驾护航!
                     </p>
                 </div>
             </div>
@@ -59,12 +61,10 @@
         <div class="row module" id="js-venture">
             <div class="col-xs-5">
                 <div class="col-xs-12">
-                    <img src="../static/images/guide.jpg" alt="" th:src="@{/images/guide.jpg}" class="img-responsive"/>
+                    <img src="../static/images/partner.jpg" alt="" th:src="@{/images/partner.jpg}" class="img-responsive"/>
                     <p>
-                        2017年，威咔科技与美国Crescent（科锐森）公司正式达成战略合作，全面负责美国Crescent（科锐森）旗下全系列产品在中国的销售及服务。
-                        美国Crescent是世界四大病理刀片制造商之一，有着百年精准刀片制造经验，在行业内具有良好的信誉与知名度。
-                        美国Crescent具有业界经验丰富的产品工程师，且完成了多项具有创新性的医疗应用刀片，如可将活组织切薄至2微米，可完美实现眼角膜手术以及去除动脉中凝血的专利刀片等。
-                        在工业领域里，美国Crescent公司服务于全球各地的高端制造商，从常规基础刀片到专用订制刀片，可快速有效提高生产效率，优化成本。
+                        我们与欧美一流刀具制造商如德国莫扎特，美国科锐森，美国博森钠，英国钻石，英国DD等合作。
+                        精品一手货源，正品行货保障！
                     </p>
                 </div>
             </div>
@@ -101,6 +101,7 @@
             </div>
         </div>
     </div>
+    <!--
     <div class="container">
         <div class="divider">
             <hr/>
@@ -172,7 +173,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 <th:block layout:fragment="script">
     <script>

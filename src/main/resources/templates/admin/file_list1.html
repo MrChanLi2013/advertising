@@ -2,7 +2,7 @@
     <div class="col-md-12 pd-left-0 pd-right-0">
         <ol class="breadcrumb">
             <li><a href="#">文件管理</a></li>
-            <li class="active">资料列表</li>
+            <li class="active">视频列表</li>
         </ol>
     </div>
 </div>
@@ -11,16 +11,16 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>产品名称</th>
-                <th>文件名称</th>
+                <th>视频描述</th>
+                <th>视频链接</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="detail ,iterStat: ${page.page}">
-                <td th:text="${detail.name}"></td>
-                <td th:text="${#strings.replace(detail.pdfURL,'/products/files/','')}"></td>
-                <td><a href="" th:href="@{/admin/file/delete(id=${detail.id})}">删除</a></td>
+                <td th:text="${detail.videoDesc}"></td>
+                <td th:text="${detail.videoLink}"></td>
+                <td><a href="" th:href="@{/admin/file/delete1(id=${detail.id})}">删除</a></td>
             </tr>
             </tbody>
         </table>
