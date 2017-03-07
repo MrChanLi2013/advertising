@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.persistence.criteria.*;
 
 @Controller
 @RequestMapping
@@ -42,7 +46,7 @@ public class FileController {
 
     @RequestMapping(value = "/admin/file/toUpload", method = RequestMethod.GET)
     public String add(Model model) {
-        model.addAttribute("category", productDao.findByParentId(1));
+        //model.addAttribute("category", productDao.findByParentId(1));
         return "admin/upload";
     }
 
@@ -52,8 +56,8 @@ public class FileController {
         try {
             ProductFile productFile = new ProductFile();
             productFile.setName(param.getName());
-            productFile.setVideoLink(param.getVideoLink());
-            productFile.setVideoDesc(param.getVideoDesc());
+            //productFile.setVideoLink(param.getVideoLink());
+            //productFile.setVideoDesc(param.getVideoDesc());
             String fileName = param.getPdfFile().getOriginalFilename();
             productFile.setPdfName(fileName);
             productFile.setPdfURL("/products/files/" + fileName);
@@ -61,10 +65,104 @@ public class FileController {
             productFile.setSize(getSize(param.getPdfFile().getSize()));
             uploadService.uploadFile(param.getPdfFile());
             productFileDao.save(productFile);
-            redirectAttributes.addFlashAttribute("message", "上传产品成功");
+            redirectAttributes.addFlashAttribute("message", "上传资料成功");
         } catch (Exception e) {
             logger.error(e.getMessage());
-            redirectAttributes.addFlashAttribute("message", String.format("上传产品失败[%s]", e.getMessage()));
+            redirectAttributes.addFlashAttribute("message", String.format("上传资料失败[%s]", e.getMessage()));
+        }
+        return "redirect:/admin/index";
+    }
+
+    @RequestMapping(value = "/admin/file/zlist", method = RequestMethod.GET)
+    public String zlist(Model model, @RequestParam(value = "page",
+            required = false,
+            defaultValue = "1") Integer page) {
+        //Page<ProductFile> productFiles = productFileDao.findAll(new PageRequest(page - 1, pageSize));
+        /**修改**/
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Page<ProductFile> productFiles = productFileDao.findAll(new Specification<ProductFile>() {
+            @Override
+            public Predicate toPredicate(Root<ProductFile> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                Path<String> pdfUrl = root.get("pdfURL");
+                /**
+                 * 连接查询条件, 不定参数，可以连接0..N个查询条件
+                 */
+                criteriaQuery.where(cb.isNotNull(pdfUrl.as(String.class))); //这里可以设置任意条查询条件
+                return null;
+            }
+        },new PageRequest(page - 1, pageSize,sort));
+        /**结束**/
+        model.addAttribute("page", new PaginationHelper<ProductFile>(productFiles, "/admin/file/zlist"));
+        return "admin/file_list";
+    }
+
+    @RequestMapping(value = "/admin/file/toUpload1", method = RequestMethod.GET)
+    public String add1(Model model) {
+        //model.addAttribute("category", productDao.findByParentId(1));
+        return "admin/upload1";
+    }
+
+
+    @RequestMapping(value = "/admin/file/upload1", method = RequestMethod.POST)
+    public String uploadFile1(ProductFileParam param, RedirectAttributes redirectAttributes) {
+        try {
+            ProductFile productFile = new ProductFile();
+            //productFile.setName(param.getName());
+            productFile.setVideoLink(param.getVideoLink());
+            productFile.setVideoDesc(param.getVideoDesc());
+//            String fileName = param.getPdfFile().getOriginalFilename();
+//            productFile.setPdfName(fileName);
+//            productFile.setPdfURL("/products/files/" + fileName);
+//            productFile.setPostfix(fileName.substring(fileName.lastIndexOf(".")+1).toUpperCase());
+//            productFile.setSize(getSize(param.getPdfFile().getSize()));
+//            uploadService.uploadFile(param.getPdfFile());
+            productFileDao.save(productFile);
+            redirectAttributes.addFlashAttribute("message", "新增视频成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            redirectAttributes.addFlashAttribute("message", String.format("新增视频失败[%s]", e.getMessage()));
+        }
+        return "redirect:/admin/index";
+    }
+
+
+
+    @RequestMapping(value = "/admin/file/zlist1", method = RequestMethod.GET)
+    public String zlist1(Model model, @RequestParam(value = "page",
+            required = false,
+            defaultValue = "1") Integer page) {
+        //Page<ProductFile> productFiles = productFileDao.findAll(new PageRequest(page - 1, pageSize));
+        /**修改**/
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Page<ProductFile> productFiles = productFileDao.findAll(new Specification<ProductFile>() {
+            @Override
+            public Predicate toPredicate(Root<ProductFile> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                Path<String> videoLink = root.get("videoLink");
+                /**
+                 * 连接查询条件, 不定参数，可以连接0..N个查询条件
+                 */
+                criteriaQuery.where(cb.isNotNull(videoLink.as(String.class))); //这里可以设置任意条查询条件
+                return null;
+            }
+        },new PageRequest(page - 1, pageSize,sort));
+        /**结束**/
+        model.addAttribute("page", new PaginationHelper<ProductFile>(productFiles, "/admin/file/zlist1"));
+        return "admin/file_list1";
+    }
+
+    @RequestMapping(value = "/admin/file/delete", method = RequestMethod.GET)
+    public String deleteProduct(@RequestParam("id") Integer id,RedirectAttributes redirectAttributes) {
+        ProductFile productFile = productFileDao.findOneById(id);
+        if(productFile != null){
+            productFileDao.delete(productFile);
+        }
+        return "redirect:/admin/index";
+    }
+    @RequestMapping(value = "/admin/file/delete1", method = RequestMethod.GET)
+    public String deleteProduct1(@RequestParam("id") Integer id,RedirectAttributes redirectAttributes) {
+        ProductFile productFile = productFileDao.findOneById(id);
+        if(productFile != null){
+            productFileDao.delete(productFile);
         }
         return "redirect:/admin/index";
     }
@@ -87,23 +185,5 @@ public class FileController {
         } else{
             return String.format("%d B", size);
         }
-}
-
-    @RequestMapping(value = "/admin/file/zlist", method = RequestMethod.GET)
-    public String zlist(Model model, @RequestParam(value = "page",
-            required = false,
-            defaultValue = "1") Integer page) {
-        Page<ProductFile> productFiles = productFileDao.findAll(new PageRequest(page - 1, pageSize));
-        model.addAttribute("page", new PaginationHelper<ProductFile>(productFiles, "/admin/file/zlist"));
-        return "admin/file_list";
-    }
-
-    @RequestMapping(value = "/admin/file/delete", method = RequestMethod.GET)
-    public String deleteProduct(@RequestParam("id") Integer id,RedirectAttributes redirectAttributes) {
-        ProductFile productFile = productFileDao.findOneById(id);
-        if(productFile != null){
-            productFileDao.delete(productFile);
-        }
-        return "redirect:/admin/index";
     }
 }

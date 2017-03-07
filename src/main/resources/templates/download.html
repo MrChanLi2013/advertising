@@ -34,7 +34,7 @@
                 <!--<video th:src="@{/video/IMG_3556.MP4}" width="600" height="300" controls="controls">
                     您的浏览器不支持播放
                 </video>-->
-                <p th:each=" productFile : ${productFiles}">
+                <p th:each=" productFile : ${productFileList}">
                     <a href="#" th:href="${productFile.videoLink}" class="download" target="_blank">
                         <i class="glyphicon glyphicon-film"></i>
                         <span th:text="${productFile.videoDesc}"></span>
