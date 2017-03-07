@@ -250,3 +250,44 @@ function updateInfo() {
         $("#js-update-user-info").validate($.extend(userRules, custom));
     }, 'html');
 }
+
+function createPdfFile() {
+    var form = $('#js-file-upload');
+    var formAction = form.attr('action');
+    $.ajax({
+        url: formAction,
+        type: 'post',
+        data: new FormData(form[0]),
+        dataType: 'text',
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            if (data == 'success') {
+                $.get('/admin/file/zlist', {}, function (data) {
+                    $('#js-right-content').html(data);
+                }, 'html');
+            } else {
+                alert('创建失败');
+            }
+        }
+    });
+}
+
+function deletePdfFile(target) {
+    $.ajax({
+        url: $(target).attr('href'),
+        type: 'get',
+        data: null,
+        dataType: 'text',
+        success: function (data) {
+            if (data == 'success') {
+                $.get('/admin/file/zlist', {}, function (data) {
+                    $('#js-right-content').html(data);
+                }, 'html');
+            } else {
+                alert('删除失败');
+            }
+        }
+    });
+    event.preventDefault();
+}

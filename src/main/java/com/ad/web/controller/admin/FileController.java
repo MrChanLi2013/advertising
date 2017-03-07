@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -52,7 +53,8 @@ public class FileController {
 
 
     @RequestMapping(value = "/admin/file/upload", method = RequestMethod.POST)
-    public String uploadFile(ProductFileParam param, RedirectAttributes redirectAttributes) {
+    @ResponseBody
+    public String uploadFile(ProductFileParam param) {
         try {
             ProductFile productFile = new ProductFile();
             productFile.setName(param.getName());
@@ -65,12 +67,12 @@ public class FileController {
             productFile.setSize(getSize(param.getPdfFile().getSize()));
             uploadService.uploadFile(param.getPdfFile());
             productFileDao.save(productFile);
-            redirectAttributes.addFlashAttribute("message", "上传资料成功");
+            return WebStatus.success.toString();
         } catch (Exception e) {
+            e.printStackTrace();
             logger.error(e.getMessage());
-            redirectAttributes.addFlashAttribute("message", String.format("上传资料失败[%s]", e.getMessage()));
+            return WebStatus.failed.toString();
         }
-        return "redirect:/admin/index";
     }
 
     @RequestMapping(value = "/admin/file/zlist", method = RequestMethod.GET)
@@ -151,12 +153,13 @@ public class FileController {
     }
 
     @RequestMapping(value = "/admin/file/delete", method = RequestMethod.GET)
-    public String deleteProduct(@RequestParam("id") Integer id,RedirectAttributes redirectAttributes) {
+    @ResponseBody
+    public String deleteProduct(@RequestParam("id") Integer id) {
         ProductFile productFile = productFileDao.findOneById(id);
         if(productFile != null){
             productFileDao.delete(productFile);
         }
-        return "redirect:/admin/index";
+        return WebStatus.success.toString();
     }
     @RequestMapping(value = "/admin/file/delete1", method = RequestMethod.GET)
     public String deleteProduct1(@RequestParam("id") Integer id,RedirectAttributes redirectAttributes) {
