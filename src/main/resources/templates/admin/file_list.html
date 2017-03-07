@@ -20,7 +20,8 @@
             <tr th:each="detail ,iterStat: ${page.page}">
                 <td th:text="${detail.name}"></td>
                 <td th:text="${#strings.replace(detail.pdfURL,'/products/files/','')}"></td>
-                <td><a href="" onclick="deletePdfFile(this)" th:href="@{/admin/file/delete(id=${detail.id})}">删除</a></td>
+                <td><a href="" onclick="commonDelete(this, '/admin/file/zlist')"
+                       th:href="@{/admin/file/delete(id=${detail.id})}">删除</a></td>
             </tr>
             </tbody>
         </table>

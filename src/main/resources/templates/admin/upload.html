@@ -8,7 +8,8 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        <form class="form-horizontal" id="js-file-upload" role="form" enctype="multipart/form-data" th:action="@{/admin/file/upload}"
+        <form class="form-horizontal" id="js-file-upload" role="form" enctype="multipart/form-data"
+              th:action="@{/admin/file/upload}"
               method="post">
             <div class="form-group">
                 <label class="col-sm-3 control-label">资料名称：</label>
@@ -55,7 +56,9 @@
             -->
             <div class="modal-footer">
                 <button type="reset" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-default" onclick="createPdfFile()">确定</button>
+                <button type="button" class="btn btn-default"
+                        onclick="commonCreate('js-file-upload','/admin/file/zlist')">确定
+                </button>
             </div>
         </form>
     </div>

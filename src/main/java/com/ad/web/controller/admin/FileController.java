@@ -1,9 +1,10 @@
 package com.ad.web.controller.admin;
 
 import com.ad.dao.ProductDao;
-import com.ad.dao.ProductDetailDao;
 import com.ad.dao.ProductFileDao;
-import com.ad.entity.*;
+import com.ad.entity.ProductFile;
+import com.ad.entity.ProductFileParam;
+import com.ad.entity.WebStatus;
 import com.ad.service.UploadService;
 import com.ad.util.PaginationHelper;
 import org.slf4j.Logger;
@@ -20,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.persistence.criteria.*;
 
@@ -63,13 +62,12 @@ public class FileController {
             String fileName = param.getPdfFile().getOriginalFilename();
             productFile.setPdfName(fileName);
             productFile.setPdfURL("/products/files/" + fileName);
-            productFile.setPostfix(fileName.substring(fileName.lastIndexOf(".")+1).toUpperCase());
+            productFile.setPostfix(fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase());
             productFile.setSize(getSize(param.getPdfFile().getSize()));
             uploadService.uploadFile(param.getPdfFile());
             productFileDao.save(productFile);
             return WebStatus.success.toString();
         } catch (Exception e) {
-            e.printStackTrace();
             logger.error(e.getMessage());
             return WebStatus.failed.toString();
         }
@@ -92,7 +90,7 @@ public class FileController {
                 criteriaQuery.where(cb.isNotNull(pdfUrl.as(String.class))); //这里可以设置任意条查询条件
                 return null;
             }
-        },new PageRequest(page - 1, pageSize,sort));
+        }, new PageRequest(page - 1, pageSize, sort));
         /**结束**/
         model.addAttribute("page", new PaginationHelper<ProductFile>(productFiles, "/admin/file/zlist"));
         return "admin/file_list";
@@ -106,7 +104,8 @@ public class FileController {
 
 
     @RequestMapping(value = "/admin/file/upload1", method = RequestMethod.POST)
-    public String uploadFile1(ProductFileParam param, RedirectAttributes redirectAttributes) {
+    @ResponseBody
+    public String uploadFile1(ProductFileParam param) {
         try {
             ProductFile productFile = new ProductFile();
             //productFile.setName(param.getName());
@@ -119,14 +118,12 @@ public class FileController {
 //            productFile.setSize(getSize(param.getPdfFile().getSize()));
 //            uploadService.uploadFile(param.getPdfFile());
             productFileDao.save(productFile);
-            redirectAttributes.addFlashAttribute("message", "新增视频成功");
+            return WebStatus.success.toString();
         } catch (Exception e) {
             logger.error(e.getMessage());
-            redirectAttributes.addFlashAttribute("message", String.format("新增视频失败[%s]", e.getMessage()));
+            return WebStatus.failed.toString();
         }
-        return "redirect:/admin/index";
     }
-
 
 
     @RequestMapping(value = "/admin/file/zlist1", method = RequestMethod.GET)
@@ -146,7 +143,7 @@ public class FileController {
                 criteriaQuery.where(cb.isNotNull(videoLink.as(String.class))); //这里可以设置任意条查询条件
                 return null;
             }
-        },new PageRequest(page - 1, pageSize,sort));
+        }, new PageRequest(page - 1, pageSize, sort));
         /**结束**/
         model.addAttribute("page", new PaginationHelper<ProductFile>(productFiles, "/admin/file/zlist1"));
         return "admin/file_list1";
@@ -156,18 +153,20 @@ public class FileController {
     @ResponseBody
     public String deleteProduct(@RequestParam("id") Integer id) {
         ProductFile productFile = productFileDao.findOneById(id);
-        if(productFile != null){
+        if (productFile != null) {
             productFileDao.delete(productFile);
         }
         return WebStatus.success.toString();
     }
+
     @RequestMapping(value = "/admin/file/delete1", method = RequestMethod.GET)
-    public String deleteProduct1(@RequestParam("id") Integer id,RedirectAttributes redirectAttributes) {
+    @ResponseBody
+    public String deleteProduct1(@RequestParam("id") Integer id) {
         ProductFile productFile = productFileDao.findOneById(id);
-        if(productFile != null){
+        if (productFile != null) {
             productFileDao.delete(productFile);
         }
-        return "redirect:/admin/index";
+        return WebStatus.success.toString();
     }
 
     private String getSize(long size) {
@@ -185,7 +184,7 @@ public class FileController {
             float f = (float) size / kb;
             //如果大于100kB就不用保留小数位了
             return String.format(f > 100 ? "%.0f KB" : "%.2f KB", f);
-        } else{
+        } else {
             return String.format("%d B", size);
         }
     }

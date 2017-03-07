@@ -152,7 +152,9 @@ function createNews() {
     if ($("#js-add-news").valid()) {
         $.post('/admin/news', {title: title, content: markupStr}, function (data) {
             if (data == 'success') {
-                alert('添加成功');
+                $.get('/admin/news-list', {}, function (data) {
+                    $('#js-right-content').html(data);
+                }, 'html');
             } else {
                 alert('操作失败');
             }
@@ -166,7 +168,9 @@ function createCompanyNews() {
     if ($("#js-add-news").valid()) {
         $.post('/admin/company-news', {title: title, content: markupStr}, function (data) {
             if (data == 'success') {
-                alert('添加成功');
+                $.get('/admin/company-news-list', {}, function (data) {
+                    $('#js-right-content').html(data);
+                }, 'html');
             } else {
                 alert('操作失败');
             }
@@ -251,8 +255,8 @@ function updateInfo() {
     }, 'html');
 }
 
-function createPdfFile() {
-    var form = $('#js-file-upload');
+function commonCreate(formId, redirectUrl) {
+    var form = $('#' + formId);
     var formAction = form.attr('action');
     $.ajax({
         url: formAction,
@@ -263,7 +267,7 @@ function createPdfFile() {
         processData: false,
         success: function (data) {
             if (data == 'success') {
-                $.get('/admin/file/zlist', {}, function (data) {
+                $.get(redirectUrl, {}, function (data) {
                     $('#js-right-content').html(data);
                 }, 'html');
             } else {
@@ -273,7 +277,7 @@ function createPdfFile() {
     });
 }
 
-function deletePdfFile(target) {
+function commonDelete(target, redirectUrl) {
     $.ajax({
         url: $(target).attr('href'),
         type: 'get',
@@ -281,7 +285,7 @@ function deletePdfFile(target) {
         dataType: 'text',
         success: function (data) {
             if (data == 'success') {
-                $.get('/admin/file/zlist', {}, function (data) {
+                $.get(redirectUrl, {}, function (data) {
                     $('#js-right-content').html(data);
                 }, 'html');
             } else {

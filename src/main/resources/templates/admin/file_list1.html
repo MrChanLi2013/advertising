@@ -20,7 +20,7 @@
             <tr th:each="detail ,iterStat: ${page.page}">
                 <td th:text="${detail.videoDesc}"></td>
                 <td th:text="${detail.videoLink}"></td>
-                <td><a href="" th:href="@{/admin/file/delete1(id=${detail.id})}">删除</a></td>
+                <td><a href="" onclick="commonDelete(this, '/admin/file/zlist1')" th:href="@{/admin/file/delete1(id=${detail.id})}">删除</a></td>
             </tr>
             </tbody>
         </table>
