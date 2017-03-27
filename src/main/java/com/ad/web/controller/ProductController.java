@@ -286,8 +286,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/admin/product/level/delete", method = RequestMethod.GET)
-    public String deleteProductLevel(@RequestParam("id") Integer id,
-                                PageProductParam param, RedirectAttributes redirectAttributes) {
+    public String deleteProductLevel(@RequestParam("id") Integer id, RedirectAttributes redirectAttributes) {
         List<Product> list = productDao.findByParentId(id);
         if(list == null || list.isEmpty()){
             Product product = productDao.findOneById(id);
@@ -295,8 +294,6 @@ public class ProductController {
                 productDao.delete(product);
                 redirectAttributes.addFlashAttribute("message", "删除成功");
             }
-        }else {
-            redirectAttributes.addFlashAttribute("message", "删除失败!此分类下子类,请先删除子类");
         }
         return "redirect:/admin/index";
     }
