@@ -3,11 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon" />
     <style type="text/css">
         body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=4a359f316c1c91457ec076c03a3d9e49"></script>
-    <title>公司地址</title>
+    <title>威咔科技（深圳）有限公司地址</title>
 </head>
 <body>
 <div id="allmap"></div>
@@ -16,20 +18,20 @@
 <script type="text/javascript">
     // 百度地图API功能
     var map = new BMap.Map("allmap");
-    var point = new BMap.Point(113.836892,22.744305);
+    var point = new BMap.Point(114.051187,22.649495);
     map.centerAndZoom(point,12);
     // 创建地址解析器实例
     var myGeo = new BMap.Geocoder();
     // 将地址解析结果显示在地图上,并调整地图视野
-    myGeo.getPoint("深圳市恒安耐刀具有限公司", function(point){
+    myGeo.getPoint("油松商务大夏", function(point){
         if (point) {
             var marker = new BMap.Marker(point);
             map.centerAndZoom(point, 14);
             map.addOverlay(marker);
 
             var licontent="<b>威咔科技（深圳）有限公司</b><br/>";
-            licontent+="<span><strong>地址：</strong>深圳市宝安区沙井镇中心路宏海汇盈大厦503室</span><br/>";
-            licontent+="<span><strong>电话：</strong>(0755)36535203 15207697533</span><br/>";
+            licontent+="<span><strong>地址：</strong>深圳市龙华新区龙华街道油松路油富综合楼619号</span><br/>";
+            licontent+="<span><strong>电话：</strong>18126403613 0755-23009391</span><br/>";
 
             var opts1 = { width: 300 };
 
@@ -39,7 +41,7 @@
         }else{
             alert("您选择地址没有解析到结果!");
         }
-    }, "成都市");
+    }, "深圳市");
 
 
 </script>

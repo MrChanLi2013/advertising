@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/ad")
 public class IndexController {
 
     private final ProductDao productDao;
@@ -23,20 +22,20 @@ public class IndexController {
         this.productDao = productDao;
     }
 
-    @RequestMapping("/index")
+    @RequestMapping(value = "/")
     public String index(Model model) {
         List<Product> productList = productDao.findByLevel(1);
         model.addAttribute("ps", productList);
         return "index";
     }
 
-    @RequestMapping("/indexLevel")
+    @RequestMapping("/ad/indexLevel")
     @ResponseBody
     public List<Product> indexLevel() {
         List<Product> productList = productDao.findByLevel(1);
         return productList;
     }
-    @RequestMapping("/map")
+    @RequestMapping("/ad/map")
     public String maz(Model model) {
         model.addAttribute("test", "test1");
         //return "redirect:http://api.map.baidu.com/marker?location=30.547218,104.052424&title=公司地址&content=逸都国际&output=html";
