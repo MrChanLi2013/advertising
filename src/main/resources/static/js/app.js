@@ -123,7 +123,7 @@ $(function () {
         $(this).hide();
     }, function () {
 
-    })
+    });
 
     $('.info-content').hover(function () {
 
@@ -131,10 +131,14 @@ $(function () {
         var img = $(this).parent().find('.member-img');
         img.show();
         $(this).hide();
-    })
+    });
 
     $('#js-product-detail').css({
         'margin-top': $('.product-category').height()
+    });
+
+    $('.news-p').find('img').css({
+        width: '100%'
     });
 });
 
