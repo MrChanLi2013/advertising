@@ -245,7 +245,7 @@ a.download {
 
 @media screen and (max-width: 767px) {
     .mobile-content {
-        margin-top: 105px;
+        margin-top: 108px;
     }
 
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
