@@ -4,8 +4,6 @@
       layout:decorator="headerLayout">
 <head>
     <title>威咔科技（深圳）有限公司</title>
-    <link type="text/css" href="../static/css/bootstrap.min.css"
-          th:href="@{/css/bootstrap.min.css.bak}" rel="stylesheet"/>
 </head>
 <body>
 <div layout:fragment="content">
@@ -126,8 +124,12 @@
         <div class="image-center image-above">
             <div class="image-wrap">
                 <div class="image-center-outer">
-                    <div class="image-center-inner" >
-                        <figure class="image"><a href="#" th:href="@{/ad/map}" target="_blank"><img src="../static/images/mozart-ag-vogelperspektive-1100x550.jpg" th:src="@{/images/mozart-ag-vogelperspektive-1100x550.jpg}"  alt=""/></a></figure>
+                    <div class="image-center-inner">
+                        <figure class="image">
+                            <a href="#" th:href="@{/ad/map}" target="_blank">
+                                <img src="../static/images/mozart-ag-vogelperspektive-1100x550.jpg" class="img-responsive"
+                                     th:src="@{/images/mozart-ag-vogelperspektive-1100x550.jpg}" alt=""/></a>
+                        </figure>
                     </div>
                 </div>
             </div>

@@ -25,3 +25,13 @@
 .module {
     margin-top: 30px;
 }
+
+@media screen and (max-width: 767px) {
+    .module {
+        margin-top: 0;
+    }
+
+    #about .line {
+        width: 0;
+    }
+}

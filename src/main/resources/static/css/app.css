@@ -220,6 +220,14 @@ a.download {
     height: 185px;
 }
 
+.is-not-mobile {
+    display: block;
+}
+
+.is-mobile {
+    display: none;
+}
+
 @media (min-width: 992px) {
     .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
         top: 100%;
@@ -233,4 +241,28 @@ a.download {
         padding-top: 160px;
     }
 
+}
+
+@media screen and (max-width: 767px) {
+    .mobile-content {
+        margin-top: 105px;
+    }
+
+    .blades-ul > li.dropdown.open > a > .bar, .blades-ul > li:hover > a > .bar, .blades-ul > li.active > a > .bar {
+        opacity: 0;
+        top: 0;
+    }
+
+    .blades-ul {
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .is-not-mobile {
+        display: none;
+    }
+
+    .is-mobile {
+        display: block;
+    }
 }

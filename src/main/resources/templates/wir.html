@@ -4,8 +4,6 @@
       layout:decorator="headerLayout">
 <head>
     <title>关于我们</title>
-    <link type="text/css" href="../static/css/bootstrap.min.css"
-          th:href="@{/css/bootstrap.min.css.bak}" rel="stylesheet"/>
     <link type="text/css" href="../static/css/wir.css"
           th:href="@{/css/wir.css}" rel="stylesheet"/>
 </head>
@@ -27,7 +25,10 @@
             </div>
         </div>-->
         <div class="row module">
-            <div class="col-xs-5">
+            <div class="col-xs-12 col-sm-12 col-md-2 is-mobile">
+                <div class="circle">公司简介</div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5">
                 <div class="col-xs-12">
                     <img src="../static/images/company.jpg" alt="" th:src="@{/images/company.jpg}" class="img-responsive"/>
                     <p>
@@ -36,19 +37,18 @@
                         公司主要业务和经营产品为医疗、食品、科学实验、纺织纤维，特种行业等诸多领域的刀具及方案提供，欢迎同业和终端需求者洽谈合作。
                     </p>
                 </div>
-
             </div>
-            <div class="col-xs-2">
+            <div class="col-md-2 is-not-mobile">
                 <div class="circle">公司简介</div>
                 <div class="line" style="height: 160%"></div>
             </div>
         </div>
         <div class="row module" id="js-idea">
-            <div class="col-xs-offset-5 col-xs-2">
+            <div class="col-md-offset-5 col-xs-12 col-sm-12 col-md-2">
                 <div class="circle">价值刀具</div>
                 <div class="line" style="height: 160%"></div>
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-12 col-sm-12 col-md-5">
                 <div class="col-xs-12">
                     <img src="../static/images/value.jpg" alt="" th:src="@{/images/value.jpg}" class="img-responsive"/>
                     <p style="text-indent: 0">
@@ -59,7 +59,10 @@
             </div>
         </div>
         <div class="row module" id="js-venture">
-            <div class="col-xs-5">
+            <div class="col-xs-12 col-sm-12 col-md-2 is-mobile">
+                <div class="circle">合作企业</div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5">
                 <div class="col-xs-12">
                     <img src="../static/images/partner.jpg" alt="" th:src="@{/images/partner.jpg}" class="img-responsive"/>
                     <p>
@@ -68,17 +71,16 @@
                     </p>
                 </div>
             </div>
-            <div class="col-xs-2">
+            <div class="col-md-2 is-not-mobile">
                 <div class="circle">合作企业</div>
                 <div class="line" style="height: 160%"></div>
             </div>
         </div>
         <div class="row module" id="js-contact-us">
-            <div class="col-xs-offset-5 col-xs-2">
+            <div class="col-md-offset-5 col-xs-12 col-sm-12 col-md-2">
                 <div class="circle">联系我们</div>
-                <!--<div class="line" style="height: 160%"></div>-->
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-12 col-sm-12 col-md-5">
                 <div class="col-xs-12">
                     <h3>深圳</h3>
                     <ul>
